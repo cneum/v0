@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import { srConfig } from '@config';
 import { KEY_CODES } from '@utils';
 import sr from '@utils/sr';
-import { usePrefersReducedMotion } from '@hooks';
 
 const StyledJobsSection = styled.section`
   max-width: 700px;
@@ -15,11 +14,6 @@ const StyledJobsSection = styled.section`
 
     @media (max-width: 600px) {
       display: block;
-    }
-
-    // Prevent container from jumping
-    @media (min-width: 700px) {
-      min-height: 340px;
     }
   }
 `;
@@ -36,13 +30,11 @@ const StyledTabList = styled.div`
     display: flex;
     overflow-x: auto;
     width: calc(100% + 100px);
-    padding-left: 50px;
     margin-left: -50px;
     margin-bottom: 30px;
   }
   @media (max-width: 480px) {
     width: calc(100% + 50px);
-    padding-left: 25px;
     margin-left: -25px;
   }
 
@@ -73,10 +65,10 @@ const StyledTabButton = styled.button`
   width: 100%;
   height: var(--tab-height);
   padding: 0 20px 2px;
-  border-left: 2px solid var(--lightest-navy);
+  border-left: 2px solid black;
   background-color: transparent;
-  color: ${({ isActive }) => (isActive ? 'var(--green)' : 'var(--slate)')};
-  font-family: var(--font-mono);
+  color: ${({ isActive }) => (isActive ? 'white' : 'black')};
+  font-family: Times New Roman;
   font-size: var(--fz-xs);
   text-align: left;
   white-space: nowrap;
@@ -95,7 +87,7 @@ const StyledTabButton = styled.button`
 
   &:hover,
   &:focus {
-    background-color: var(--light-navy);
+    background-color: black;
   }
 `;
 
@@ -107,7 +99,7 @@ const StyledHighlight = styled.div`
   width: 2px;
   height: var(--tab-height);
   border-radius: var(--border-radius);
-  background: var(--green);
+  background: white;
   transform: translateY(calc(${({ activeTabId }) => activeTabId} * var(--tab-height)));
   transition: transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
   transition-delay: 0.1s;
@@ -127,8 +119,6 @@ const StyledHighlight = styled.div`
 `;
 
 const StyledTabPanels = styled.div`
-  position: relative;
-  width: 100%;
   margin-left: 20px;
 
   @media (max-width: 600px) {
@@ -146,20 +136,19 @@ const StyledTabPanel = styled.div`
   }
 
   h3 {
-    margin-bottom: 2px;
+    margin-bottom: 5px;
     font-size: var(--fz-xxl);
-    font-weight: 500;
-    line-height: 1.3;
+    font-weight: 600;
 
     .company {
-      color: var(--green);
+      color: black;
     }
   }
 
   .range {
-    margin-bottom: 25px;
-    color: var(--light-slate);
-    font-family: var(--font-mono);
+    margin-bottom: 30px;
+    color: white;
+    font-family: inherit;
     font-size: var(--fz-xs);
   }
 `;
@@ -192,16 +181,9 @@ const Jobs = () => {
   const [activeTabId, setActiveTabId] = useState(0);
   const [tabFocus, setTabFocus] = useState(null);
   const tabs = useRef([]);
+
   const revealContainer = useRef(null);
-  const prefersReducedMotion = usePrefersReducedMotion();
-
-  useEffect(() => {
-    if (prefersReducedMotion) {
-      return;
-    }
-
-    sr.reveal(revealContainer.current, srConfig());
-  }, []);
+  useEffect(() => sr.reveal(revealContainer.current, srConfig()), []);
 
   const focusTab = () => {
     if (tabs.current[tabFocus]) {

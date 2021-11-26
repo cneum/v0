@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import { srConfig } from '@config';
 import sr from '@utils/sr';
 import { Icon } from '@components/icons';
-import { usePrefersReducedMotion } from '@hooks';
 
 const StyledProjectsSection = styled.section`
   display: flex;
@@ -17,8 +16,8 @@ const StyledProjectsSection = styled.section`
   }
 
   .archive-link {
-    font-family: var(--font-mono);
     font-size: var(--fz-sm);
+    padding: 10px 0px;
     &:after {
       bottom: 0.1em;
     }
@@ -35,11 +34,16 @@ const StyledProjectsSection = styled.section`
     @media (max-width: 1080px) {
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     }
+
+    a {
+      position: relative;
+      z-index: 1;
+    }
   }
 
   .more-button {
     ${({ theme }) => theme.mixins.button};
-    margin: 80px auto 0;
+    margin: 40px auto 0;
   }
 `;
 
@@ -48,18 +52,11 @@ const StyledProject = styled.li`
   cursor: default;
   transition: var(--transition);
 
-  @media (prefers-reduced-motion: no-preference) {
-    &:hover,
-    &:focus-within {
-      .project-inner {
-        transform: translateY(-7px);
-      }
+  &:hover,
+  &:focus-within {
+    .project-inner {
+      transform: translateY(-7px);
     }
-  }
-
-  a {
-    position: relative;
-    z-index: 1;
   }
 
   .project-inner {
@@ -70,8 +67,8 @@ const StyledProject = styled.li`
     position: relative;
     height: 100%;
     padding: 2rem 1.75rem;
-    border-radius: var(--border-radius);
-    background-color: var(--light-navy);
+    background-color: var(--red);
+    -webkit-filter: grayscale(15%);
     transition: var(--transition);
   }
 
@@ -80,7 +77,7 @@ const StyledProject = styled.li`
     margin-bottom: 35px;
 
     .folder {
-      color: var(--green);
+      color: black;
       svg {
         width: 40px;
         height: 40px;
@@ -91,11 +88,11 @@ const StyledProject = styled.li`
       display: flex;
       align-items: center;
       margin-right: -10px;
-      color: var(--light-slate);
 
       a {
         ${({ theme }) => theme.mixins.flexCenter};
         padding: 5px 7px;
+        color: white;
 
         &.external {
           svg {
@@ -115,7 +112,7 @@ const StyledProject = styled.li`
 
   .project-title {
     margin: 0 0 10px;
-    color: var(--lightest-slate);
+    color: black;
     font-size: var(--fz-xxl);
 
     a {
@@ -135,7 +132,7 @@ const StyledProject = styled.li`
   }
 
   .project-description {
-    color: var(--light-slate);
+    color: black;
     font-size: 17px;
 
     a {
@@ -153,7 +150,7 @@ const StyledProject = styled.li`
     list-style: none;
 
     li {
-      font-family: var(--font-mono);
+      font-style: oblique;
       font-size: var(--fz-xxs);
       line-height: 1.75;
 
@@ -193,13 +190,8 @@ const Projects = () => {
   const revealTitle = useRef(null);
   const revealArchiveLink = useRef(null);
   const revealProjects = useRef([]);
-  const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
-    if (prefersReducedMotion) {
-      return;
-    }
-
     sr.reveal(revealTitle.current, srConfig());
     sr.reveal(revealArchiveLink.current, srConfig());
     revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
@@ -210,78 +202,18 @@ const Projects = () => {
   const firstSix = projects.slice(0, GRID_LIMIT);
   const projectsToShow = showMore ? projects : firstSix;
 
-  const projectInner = node => {
-    const { frontmatter, html } = node;
-    const { github, external, title, tech } = frontmatter;
-
-    return (
-      <div className="project-inner">
-        <header>
-          <div className="project-top">
-            <div className="folder">
-              <Icon name="Folder" />
-            </div>
-            <div className="project-links">
-              {github && (
-                <a href={github} aria-label="GitHub Link" target="_blank" rel="noreferrer">
-                  <Icon name="GitHub" />
-                </a>
-              )}
-              {external && (
-                <a
-                  href={external}
-                  aria-label="External Link"
-                  className="external"
-                  target="_blank"
-                  rel="noreferrer">
-                  <Icon name="External" />
-                </a>
-              )}
-            </div>
-          </div>
-
-          <h3 className="project-title">
-            <a href={external} target="_blank" rel="noreferrer">
-              {title}
-            </a>
-          </h3>
-
-          <div className="project-description" dangerouslySetInnerHTML={{ __html: html }} />
-        </header>
-
-        <footer>
-          {tech && (
-            <ul className="project-tech-list">
-              {tech.map((tech, i) => (
-                <li key={i}>{tech}</li>
-              ))}
-            </ul>
-          )}
-        </footer>
-      </div>
-    );
-  };
-
   return (
     <StyledProjectsSection>
       <h2 ref={revealTitle}>Other Noteworthy Projects</h2>
 
-      <Link className="inline-link archive-link" to="/archive" ref={revealArchiveLink}>
-        view the archive
-      </Link>
-
       <ul className="projects-grid">
-        {prefersReducedMotion ? (
-          <>
-            {projectsToShow &&
-              projectsToShow.map(({ node }, i) => (
-                <StyledProject key={i}>{projectInner(node)}</StyledProject>
-              ))}
-          </>
-        ) : (
-          <TransitionGroup component={null}>
-            {projectsToShow &&
-              projectsToShow.map(({ node }, i) => (
+        <TransitionGroup component={null}>
+          {projectsToShow &&
+            projectsToShow.map(({ node }, i) => {
+              const { frontmatter, html } = node;
+              const { github, external, title, tech } = frontmatter;
+
+              return (
                 <CSSTransition
                   key={i}
                   classNames="fadeup"
@@ -293,17 +225,59 @@ const Projects = () => {
                     style={{
                       transitionDelay: `${i >= GRID_LIMIT ? (i - GRID_LIMIT) * 100 : 0}ms`,
                     }}>
-                    {projectInner(node)}
+                    <div className="project-inner">
+                      <header>
+                        <div className="project-top">
+                          <div className="folder">
+                            <Icon name="Folder" />
+                          </div>
+                          <div className="project-links">
+                            {github && (
+                              <a href={github} aria-label="GitHub Link">
+                                <Icon name="GitHub" />
+                              </a>
+                            )}
+                            {external && (
+                              <a href={external} aria-label="External Link" className="external">
+                                <Icon name="External" />
+                              </a>
+                            )}
+                          </div>
+                        </div>
+
+                        <h3 className="project-title">
+                          <a href={external}>{title}</a>
+                        </h3>
+
+                        <div
+                          className="project-description"
+                          dangerouslySetInnerHTML={{ __html: html }}
+                        />
+                      </header>
+
+                      <footer>
+                        {tech && (
+                          <ul className="project-tech-list">
+                            {tech.map((tech, i) => (
+                              <li key={i}>{tech}</li>
+                            ))}
+                          </ul>
+                        )}
+                      </footer>
+                    </div>
                   </StyledProject>
                 </CSSTransition>
-              ))}
-          </TransitionGroup>
-        )}
+              );
+            })}
+        </TransitionGroup>
       </ul>
 
       <button className="more-button" onClick={() => setShowMore(!showMore)}>
         Show {showMore ? 'Less' : 'More'}
       </button>
+      <Link className="inline-link archive-link" to="/archive" ref={revealArchiveLink}>
+        view the archive
+      </Link>
     </StyledProjectsSection>
   );
 };

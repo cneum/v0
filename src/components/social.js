@@ -19,7 +19,7 @@ const StyledSocialList = styled.ul`
     width: 1px;
     height: 90px;
     margin: 0 auto;
-    background-color: var(--light-slate);
+    background-color: black;
   }
 
   li {
@@ -49,7 +49,7 @@ const Social = ({ isHome }) => (
       {socialMedia &&
         socialMedia.map(({ url, name }, i) => (
           <li key={i}>
-            <a href={url} aria-label={name} target="_blank" rel="noreferrer">
+            <a href={url} aria-label={name} target="_blank" rel="noopener noreferrer">
               <Icon name={name} />
             </a>
           </li>

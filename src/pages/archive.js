@@ -7,7 +7,6 @@ import { srConfig } from '@config';
 import sr from '@utils/sr';
 import { Layout } from '@components';
 import { Icon } from '@components/icons';
-import { usePrefersReducedMotion } from '@hooks';
 
 const StyledTableContainer = styled.div`
   margin: 100px -20px;
@@ -29,7 +28,7 @@ const StyledTableContainer = styled.div`
     tbody tr {
       &:hover,
       &:focus {
-        background-color: var(--light-navy);
+        background-color: rgb(255, 250, 240, 0.4);
       }
     }
 
@@ -85,7 +84,7 @@ const StyledTableContainer = styled.div`
       &.title {
         padding-top: 15px;
         padding-right: 20px;
-        color: var(--lightest-slate);
+        color: var(--red);
         font-size: var(--fz-xl);
         font-weight: 600;
         line-height: 1.25;
@@ -98,7 +97,7 @@ const StyledTableContainer = styled.div`
 
       &.tech {
         font-size: var(--fz-xxs);
-        font-family: var(--font-mono);
+        font-style: oblique;
         line-height: 1.5;
         .separator {
           margin: 0 5px;
@@ -134,13 +133,8 @@ const ArchivePage = ({ location, data }) => {
   const revealTitle = useRef(null);
   const revealTable = useRef(null);
   const revealProjects = useRef([]);
-  const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
-    if (prefersReducedMotion) {
-      return;
-    }
-
     sr.reveal(revealTitle.current, srConfig());
     sr.reveal(revealTable.current, srConfig(200, 0));
     revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 10)));

@@ -1,17 +1,68 @@
 import { createGlobalStyle } from 'styled-components';
-import fonts from './fonts';
-import variables from './variables';
+import Fonts from './fonts';
 import TransitionStyles from './TransitionStyles';
 import PrismStyles from './PrismStyles';
 
 const GlobalStyle = createGlobalStyle`
-  ${fonts};
-  ${variables};
+  ${Fonts};
+
+  :root {
+    --dark-navy: #020c1b;
+    --navy: #0a192f;
+    --light-navy: #112240;
+    --lightest-navy: #233554;
+    --navy-shadow: rgba(2, 12, 27, 0.7);
+    --slate: #8892b0;
+    --light-slate: #a8b2d1;
+    --lightest-slate: #ccd6f6;
+    --white: #e6f1ff;
+    --green: #64ffda;
+    --green-tint: rgba(100, 255, 218, 0.1);
+    --pink: #de5285;
+    --red: #f93700;
+    --greige: #dbd5c9;
+    --dark-greige: #B2A58C;
+
+    --font-sans: 'Calibre', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
+    --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+
+    --fz-xxs: 12px;
+    --fz-xs: 13px;
+    --fz-sm: 14px;
+    --fz-md: 16px;
+    --fz-lg: 18px;
+    --fz-xl: 20px;
+    --fz-xxl: 22px;
+    --fz-heading: 32px;
+
+    --border-radius: 4px;
+    --nav-height: 100px;
+    --nav-scroll-height: 70px;
+
+    --tab-height: 42px;
+    --tab-width: 120px;
+
+    --easing: cubic-bezier(0.645, 0.045, 0.355, 1);
+    --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+    --hamburger-width: 30px;
+
+    --ham-before: top 0.1s ease-in 0.25s, opacity 0.1s ease-in;
+    --ham-before-active: top 0.1s ease-out, opacity 0.1s ease-out 0.12s;
+    --ham-after: bottom 0.1s ease-in 0.25s, transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    --ham-after-active: bottom 0.1s ease-out, transform 0.22s cubic-bezier(0.215, 0.61, 0.355, 1) 0.12s;
+
+    --progress: 0;
+    --track: #ccc;
+    --thumb: #f93700;
+    --height: 150vh;
+    --radius: 5;
+    --width: 10;
+  }
 
   html {
     box-sizing: border-box;
     width: 100%;
-    scroll-behavior: smooth;
   }
 
   *,
@@ -21,64 +72,46 @@ const GlobalStyle = createGlobalStyle`
   }
 
   ::selection {
-    background-color: var(--lightest-navy);
-    color: var(--lightest-slate);
+    background-color: inherit;
+    color: inherit;
   }
-
-  /* Provide basic, default focus styles.*/
   :focus {
-    outline: 2px dashed var(--green);
-    outline-offset: 3px;
   }
 
-  /*
-    Remove default focus styles for mouse users ONLY if
-    :focus-visible is supported on this platform.
-  */
-  :focus:not(:focus-visible) {
-    outline: none;
-    outline-offset: 0px;
+  .progress {
+    background-color: var(--dark-greige);
+    height: var(--height);
+    overflow: hidden;
+    padding: calc(1px * var(--inset));
+    width: calc(1px * var(--width));
+    position:fixed;
   }
+  .bar {
+    background-color: var(--red);
+    height: 100%;
+    transform-origin: 0 0;
+    transform: scaleY(var(--progress));
+    width: 100%;
+  }  
 
-  /*
-    Optionally: If :focus-visible is supported on this
-    platform, provide enhanced focus styles for keyboard
-    focus.
-  */
-  :focus-visible {
-    outline: 2px dashed var(--green);
-    outline-offset: 3px;
-  }
+  :focus {
 
-  /* Scrollbar Styles */
-  html {
-    scrollbar-width: thin;
-    scrollbar-color: var(--dark-slate) var(--navy);
-  }
-  body::-webkit-scrollbar {
-    width: 12px;
-  }
-  body::-webkit-scrollbar-track {
-    background: var(--navy);
-  }
-  body::-webkit-scrollbar-thumb {
-    background-color: var(--dark-slate);
-    border: 3px solid var(--navy);
-    border-radius: 10px;
   }
 
   body {
+
     margin: 0;
     width: 100%;
     min-height: 100%;
     overflow-x: hidden;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    background-color: var(--navy);
-    color: var(--slate);
-    font-family: var(--font-sans);
+    background-color: #dbd5c9;
+    color: black;
+    font-family: Times New Roman;
     font-size: var(--fz-xl);
     line-height: 1.3;
+
 
     @media (max-width: 480px) {
       font-size: var(--fz-lg);
@@ -101,6 +134,7 @@ const GlobalStyle = createGlobalStyle`
         pointer-events: none;
         user-select: none;
       }
+
     }
   }
 
@@ -110,6 +144,7 @@ const GlobalStyle = createGlobalStyle`
     grid-template-rows: 1fr auto;
     grid-template-columns: 100%;
   }
+
 
   main {
     margin: 0 auto;
@@ -145,7 +180,7 @@ const GlobalStyle = createGlobalStyle`
 
   section {
     margin: 0 auto;
-    padding: 100px 0;
+    padding: 50px 0;
     max-width: 1000px;
 
     @media (max-width: 768px) {
@@ -158,14 +193,18 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h1,
-  h2,
+  h2 {
+    font-family: Times New Roman;
+    font-style: oblique;
+    color: black;
+  }
   h3,
   h4,
   h5,
   h6 {
     margin: 0 0 10px 0;
     font-weight: 600;
-    color: var(--lightest-slate);
+    color: black;
     line-height: 1.1;
   }
 
@@ -194,8 +233,8 @@ const GlobalStyle = createGlobalStyle`
       counter-increment: section;
       content: '0' counter(section) '.';
       margin-right: 10px;
-      color: var(--green);
-      font-family: var(--font-mono);
+      color: black;
+      font-family: Times New Roman;
       font-size: clamp(var(--fz-md), 3vw, var(--fz-xl));
       font-weight: 400;
 
@@ -258,10 +297,11 @@ const GlobalStyle = createGlobalStyle`
     color: inherit;
     position: relative;
     transition: var(--transition);
+    cursor: pointer;
 
     &:hover,
     &:focus {
-      color: var(--green);
+      color: black;
     }
 
     &.inline-link {
@@ -292,7 +332,8 @@ const GlobalStyle = createGlobalStyle`
 
   p {
     margin: 0 0 15px 0;
-
+    font-family: Times New Roman;
+g
     &:last-child,
     &:last-of-type {
       margin: 0;
@@ -322,17 +363,17 @@ const GlobalStyle = createGlobalStyle`
         padding-left: 30px;
         margin-bottom: 10px;
         &:before {
-          content: '▹';
+          content: '▸';
           position: absolute;
           left: 0;
-          color: var(--green);
+          color: black;
         }
       }
     }
   }
 
   blockquote {
-    border-left-color: var(--green);
+    border-left-color: black;
     border-left-style: solid;
     border-left-width: 1px;
     margin-left: 0px;
@@ -356,49 +397,26 @@ const GlobalStyle = createGlobalStyle`
   }
 
   code {
-    font-family: var(--font-mono);
+    font-family:  Times New Roman;
     font-size: var(--fz-md);
   }
 
-  .skip-to-content {
-    ${({ theme }) => theme.mixins.button};
-    position: absolute;
-    top: auto;
-    left: -999px;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    z-index: -99;
-
-    &:focus,
-    &:active {
-      background-color: var(--green);
-      color: var(--navy);
-      top: 0;
-      left: 0;
-      width: auto;
-      height: auto;
-      overflow: auto;
-      z-index: 99;
-    }
-  }
-
   #logo {
-    color: var(--green);
+    color: black;
   }
 
   .overline {
-    color: var(--green);
-    font-family: var(--font-mono);
+    color: black;
+    font-family:  Times New Roman;
     font-size: var(--fz-md);
     font-weight: 400;
   }
 
   .subtitle {
-    color: var(--green);
+    color: black;
     margin: 0 0 20px 0;
     font-size: var(--fz-md);
-    font-family: var(--font-mono);
+    font-family:  Times New Roman;
     font-weight: 400;
     line-height: 1.5;
     @media (max-width: 1080px) {
@@ -418,7 +436,7 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     align-items: center;
     margin-bottom: 50px;
-    color: var(--green);
+    color: black;
 
     .arrow {
       display: block;
@@ -428,7 +446,7 @@ const GlobalStyle = createGlobalStyle`
 
     a {
       ${({ theme }) => theme.mixins.inlineLink};
-      font-family: var(--font-mono);
+      font-family: times new roman;
       font-size: var(--fz-sm);
       font-weight: 600;
       line-height: 1.5;
@@ -439,6 +457,11 @@ const GlobalStyle = createGlobalStyle`
 
   .gatsby-image-outer-wrapper {
     height: 100%;
+  }
+  .footer {
+    a {
+      font-family: times new roman;
+    }
   }
 
   ${TransitionStyles};
