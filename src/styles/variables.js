@@ -13,16 +13,17 @@ const variables = css`
     --white: #ffffff;
     --green: #64ffda;
     --green-tint: rgba(100, 255, 218, 0.1);
-    --pink: #de5285;
+    --pink: #f4dadd;
     --red: #f93700;
     --greige: #dbd5c9;
     --dark-greige: #c7bdaa;
     --black: #000000;
 
-    --font-sans: 'Arial', -apple-system, system-ui, sans-serif;
+    --font-sans: 'Helvetic Neue', -apple-system, system-ui, sans-serif;
     --font-serif: 'Times New Roman', Times, -apple-system, system-ui, serif;
     --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
 
+    --fz-xxx: 11px;
     --fz-xxs: 12px;
     --fz-xs: 13px;
     --fz-sm: 14px;

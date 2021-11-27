@@ -22,7 +22,9 @@ const StyledLinkWrapper = styled.div`
   a {
     margin: 20px auto;
     padding: 10px;
-    font-size: var(--fz-xxs);
+    font-size: 10px;
+    font-family: var(--font-sans);
+    text-transform: uppercase;
     letter-spacing: 0.1em;
     writing-mode: vertical-rl;
 

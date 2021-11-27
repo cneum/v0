@@ -53,7 +53,7 @@ const StyledNav = styled.nav`
   position: relative;
   width: 100%;
   color: black;
-  font-family: var(--font-sans);
+  font-family: var(--font-serif);
   counter-reset: item 0;
   z-index: 12;
 
@@ -110,7 +110,8 @@ const StyledLinks = styled.div`
           margin-right: 2px;
           color: var(--red);
           font-weight: 800;
-          font-size: var(--fz-lg);
+          font-style: italic;
+          font-size: var(--fz-xl);
           text-align: right;
         }
         &:after {
@@ -123,10 +124,9 @@ const StyledLinks = styled.div`
   .resume-button {
     ${({ theme }) => theme.mixins.smallButton};
     margin-left: 15px;
-    font-size: var(--fz-xs);
-    background-color: var(--dark-greige);
-    border: 0px;
-    color: var(--greige);
+    background-color: transparent;
+    border: 4px solid var(--pink);
+    color: var(--pink);
     &:hover {
       background-color: black;
       color: var(--greige);
@@ -189,7 +189,7 @@ const Nav = ({ isHome }) => {
 
   const ResumeLink = (
     <a className="resume-button" href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-      Resume
+      CV
     </a>
   );
 

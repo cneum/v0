@@ -1,7 +1,7 @@
 ---
-date: 'YYYY-MM-DD'
+date: '2018-08-02'
 title: 'Position Title'
-company: 'Company Present'
+company: 'CUMC Sia Lab; Que Lab'
 location: 'New York, NY'
 range: 'Start - Present'
 url: ''

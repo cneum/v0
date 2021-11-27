@@ -1,7 +1,7 @@
 ---
-date: '2015-06-01'
-title: 'Research Support Assistant'
-company: 'CUMC Herbert Irving Comp. Cancer Center'
+date: '2018-08-01'
+title: 'Pediatric Anesthesia Technician'
+company: 'Morgan Stanley Childrens Hospital of NYP'
 location: 'New York, NY'
 range: 'Start - Present'
 url: ''

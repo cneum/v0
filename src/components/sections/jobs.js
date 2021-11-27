@@ -7,7 +7,7 @@ import { KEY_CODES } from '@utils';
 import sr from '@utils/sr';
 
 const StyledJobsSection = styled.section`
-  max-width: 700px;
+  max-width: 850px;
 
   .inner {
     display: flex;
@@ -67,9 +67,11 @@ const StyledTabButton = styled.button`
   padding: 0 20px 2px;
   border-left: 2px solid black;
   background-color: transparent;
-  color: ${({ isActive }) => (isActive ? 'white' : 'black')};
-  font-family: Times New Roman;
-  font-size: var(--fz-xs);
+  color: ${({ isActive }) => (isActive ? 'var(--red)' : 'black')};
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  font-size: var(--fz-xxs);
+  font-weight: ${({ isActive }) => (isActive ? '500' : '100')};
   text-align: left;
   white-space: nowrap;
 
@@ -99,7 +101,7 @@ const StyledHighlight = styled.div`
   width: 2px;
   height: var(--tab-height);
   border-radius: var(--border-radius);
-  background: white;
+  background: var(--red);
   transform: translateY(calc(${({ activeTabId }) => activeTabId} * var(--tab-height)));
   transition: transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
   transition-delay: 0.1s;
@@ -130,23 +132,28 @@ const StyledTabPanel = styled.div`
   width: 100%;
   height: auto;
   padding: 10px 5px;
+  font-family: var(--font-sans);
 
   ul {
     ${({ theme }) => theme.mixins.fancyList};
   }
 
   h3 {
-    margin-bottom: 5px;
-    font-size: var(--fz-xxl);
-    font-weight: 600;
-
+    margin: 0;
+    font-size: var(--fz-lg);
+    font-weight: 300;
     .company {
       color: black;
     }
   }
-
+  a {
+    font-weight: 600;
+    color: var(--pink);
+    font-size: var(--fz-md);
+    margin: 5px 0 0;
+  }
   .range {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     color: white;
     font-family: inherit;
     font-size: var(--fz-xs);
@@ -243,7 +250,8 @@ const Jobs = () => {
                   role="tab"
                   tabIndex={activeTabId === i ? '0' : '-1'}
                   aria-selected={activeTabId === i ? true : false}
-                  aria-controls={`panel-${i}`}>
+                  aria-controls={`panel-${i}`}
+                >
                   <span>{company}</span>
                 </StyledTabButton>
               );
@@ -265,14 +273,17 @@ const Jobs = () => {
                     tabIndex={activeTabId === i ? '0' : '-1'}
                     aria-labelledby={`tab-${i}`}
                     aria-hidden={activeTabId !== i}
-                    hidden={activeTabId !== i}>
+                    hidden={activeTabId !== i}
+                  >
                     <h3>
                       <span>{title}</span>
                       <span className="company">
-                        &nbsp;@&nbsp;
-                        <a href={url} className="inline-link">
-                          {company}
-                        </a>
+                        &nbsp;
+                        <p>
+                          <a href={url} className="inline-link">
+                            {company}
+                          </a>
+                        </p>
                       </span>
                     </h3>
 

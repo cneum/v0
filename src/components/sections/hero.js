@@ -11,10 +11,10 @@ const StyledHeroSection = styled.section`
   min-height: 100vh;
 
   h1 {
-    margin: 0 0 10px 0px;
+    margin: 0 0 6px 0px;
     color: var(--black);
     font-family: var(--font-serif);
-    font-size: clamp(var(--fz-sm), 5vw, var(--fz-md));
+    font-size: clamp(var(--fz-lg), 6vw, var(--fz-xl));
     font-weight: 400;
 
     @media (max-width: 480px) {
@@ -31,16 +31,17 @@ const StyledHeroSection = styled.section`
   }
 
   p {
-    margin: 0px 0 0;
-    max-width: 430px;
-    color: black;
-    font-family: var(--font-sans);
-    font-weight: 100;
+    margin: 0px 8px 0;
+    max-width: 460px;
+    text-transform: uppercase;
+    word-spacing: 1px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
   }
 
   .email-link {
     ${({ theme }) => theme.mixins.bigButton};
-    margin-top: 25px;
+    margin-top: 20px;
   }
 `;
 
@@ -58,7 +59,7 @@ const Hero = () => {
 
   const one = <h1>Hi, my name is</h1>;
   const two = <h2 className="big-heading">Celine</h2>;
-  const three = <h3 className="big-heading">I like to solve problems.</h3>;
+  const three = <h3 className="medium-heading">I like to solve problems.</h3>;
   const four = (
     <p>
       I'm a science enthusiast and serial tinkerer navigating life as if it were a pas de deux.

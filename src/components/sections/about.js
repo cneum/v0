@@ -26,12 +26,14 @@ const StyledText = styled.div`
     margin: 20px 0 0 0;
     overflow: hidden;
     list-style: none;
+    line-height: 1.6;
+    font-style: italic;
 
     li {
       position: relative;
       margin-bottom: 10px;
-      padding-left: 20px;
-      font-family: var(--font-sans);
+      padding-left: 15px;
+      font-family: var(--font-serif);
       font-size: var(--fz-xs);
 
       &:before {
@@ -39,7 +41,9 @@ const StyledText = styled.div`
         position: absolute;
         left: 0;
         color: var(--red);
-        font-size: var(--fz-xs);
+        font-size: 24px;
+        line-height: 0.9;
+        font-style: normal;
       }
     }
   }
@@ -67,8 +71,8 @@ const StyledPic = styled.div`
       outline: 0;
 
       &:after {
-        top: 20px;
-        left: 20px;
+        top: 2px;
+        left: 0px;
       }
 
       .img {
@@ -106,8 +110,8 @@ const StyledPic = styled.div`
     &:after {
       border: 2px solid;
       border-color: var(--red);
-      top: 20px;
-      left: 20px;
+      top: 2px;
+      left: 2px;
       z-index: -1;
     }
   }
@@ -132,7 +136,7 @@ const About = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, []);
 
-  const skills = ['Item 1', 'Item 2', 'Item 3'];
+  const skills = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
@@ -141,7 +145,7 @@ const About = () => {
       <div className="inner">
         <StyledText>
           <div>
-            <p>Hello! I'm Celine. Based in New York, NY.</p>
+            <p>Hello! I'm Celine.</p>
 
             <p></p>
 

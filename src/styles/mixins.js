@@ -93,10 +93,11 @@ const mixins = {
     color: black;
     background-color: transparent;
     border: 1px solid black;
-    padding: 0.5rem 0.7rem;
-    font-size: var(--fz-xs);
-    font-family: var(--font-serif);
+    padding: 0.4rem 0.6rem;
+    font-size: 15px;
+    font-family: var(--font-sans);
     line-height: 1;
+    font-weight: 600;
     text-decoration: none;
     cursor: pointer;
     transition: var(--transition);
@@ -117,14 +118,16 @@ const mixins = {
   `,
 
   bigButton: css`
-    color: black;
+    color: var(--pink);
     background-color: transparent;
-    border: 1px solid black;
-    padding: 0.8rem 1rem;
-    font-size: var(--fz-sm);
-    font-family: var(--font-serif);
+    border: 4px solid var(--pink);
+    padding: 0.7rem 0.9rem;
+    font-size: 15px;
+    font-family: var(--font-sans);
+    font-weight: 700;
     line-height: 1;
     text-decoration: none;
+    text-transform: uppercase;
     cursor: pointer;
     transition: var(--transition);
     &:hover {
@@ -154,16 +157,22 @@ const mixins = {
     padding: 0;
     margin: 0;
     list-style: none;
-    font-size: var(--fz-lg);
+    font-size: var(--fz-xs);
     li {
       position: relative;
-      padding-left: 30px;
-      margin-bottom: 10px;
+      padding-left: 25px;
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: var(--fz-sm);
+      font-weight: 100;
+      line-height: 1.7;
       &:before {
         content: '▸';
         position: absolute;
+        font-size: 24px;
         left: 0;
         color: var(--red);
+        line-height: 0.9;
       }
     }
   `,

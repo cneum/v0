@@ -1,7 +1,7 @@
 ---
-date: 'YYYY-MM-DD'
-title: 'Position Title'
-company: 'Company 3'
+date: '2018-08-21'
+title: 'Microsurgery Research and Teaching Assistant'
+company: 'Columbia University Irving Medical Center'
 location: 'New York, NY'
 range: 'Start - Present'
 url: ''
