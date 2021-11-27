@@ -13,7 +13,7 @@ const variables = css`
     --white: #ffffff;
     --green: #64ffda;
     --green-tint: rgba(100, 255, 218, 0.1);
-    --pink: #f4dadd;
+    --pink: #edc7c7;
     --red: #f93700;
     --greige: #dbd5c9;
     --dark-greige: #c7bdaa;

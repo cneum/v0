@@ -92,12 +92,11 @@ const mixins = {
   smallButton: css`
     color: black;
     background-color: transparent;
-    border: 1px solid black;
-    padding: 0.4rem 0.6rem;
-    font-size: 15px;
+    padding: 0.3rem 0.5rem;
+    font-size: 19px;
     font-family: var(--font-sans);
     line-height: 1;
-    font-weight: 600;
+    font-weight: 300;
     text-decoration: none;
     cursor: pointer;
     transition: var(--transition);
@@ -118,13 +117,12 @@ const mixins = {
   `,
 
   bigButton: css`
-    color: var(--pink);
-    background-color: transparent;
-    border: 4px solid var(--pink);
-    padding: 0.7rem 0.9rem;
-    font-size: 15px;
+    color: var(--red);
+    background-color: white;
+    padding: 0.4rem 0.6rem;
+    font-size: 18px;
     font-family: var(--font-sans);
-    font-weight: 700;
+    font-weight: 300;
     line-height: 1;
     text-decoration: none;
     text-transform: uppercase;

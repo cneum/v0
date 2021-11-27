@@ -19,7 +19,7 @@ const StyledSocialList = styled.ul`
     width: 1px;
     height: 90px;
     margin: 0 auto;
-    background-color: var(--red);
+    background-color: var(--black);
   }
 
   li {
@@ -29,7 +29,7 @@ const StyledSocialList = styled.ul`
 
     a {
       padding: 10px;
-
+      opacity: 0.2;
       &:hover,
       &:focus {
         transform: translateY(-3px);

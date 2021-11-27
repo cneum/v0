@@ -43,8 +43,9 @@ const StyledProject = styled.li`
         grid-column: 5 / -1;
       }
       @media (max-width: 768px) {
-        grid-column: 1 / -7;
+        grid-column: 1 / -1;
         padding: 0px 0px 0px;
+        text-align: left;
       }
       @media (max-width: 480px) {
         padding: 25px 25px 20px;
@@ -70,7 +71,7 @@ const StyledProject = styled.li`
       grid-column: 1 / -6;
 
       @media (max-width: 768px) {
-        grid-column: 6 / -1;
+        grid-column: 3 / -1;
       }
     }
   }
@@ -87,9 +88,9 @@ const StyledProject = styled.li`
     @media (max-width: 768px) {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      text-align: right;
       height: 100%;
-      grid-column: 7 / -1;
+      grid-column: 1 / -1;
       padding: 0px 0px 0px;
       z-index: 5;
     }
@@ -222,8 +223,7 @@ const StyledProject = styled.li`
     z-index: 1;
 
     @media (max-width: 768px) {
-      grid-column: 1 / -6;
-
+      grid-column: 1 / -3;
       opacity: 0.25;
     }
 

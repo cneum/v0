@@ -134,37 +134,37 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     max-width: 1600px;
     min-height: 100vh;
-    padding: 20px 70px;
+    padding: 40px 100px;
 
     @media (max-width: 1080px) {
-      padding: 20px 60px;
+      padding: 40px 80px;
     }
     @media (max-width: 768px) {
-      padding: 150px 30px;
+      padding: 150px 70px;
     }
     @media (max-width: 480px) {
       padding: 125px 15px;
     }
 
     &.fillHeight {
-      padding: 0 70px;
+      padding: 0 100px;
 
       @media (max-width: 1080px) {
-        padding: 0 60px;
+        padding: 0 70px;
       }
       @media (max-width: 768px) {
-        padding: 0 30px;
+        padding: 0 40px;
       }
       @media (max-width: 480px) {
-        padding: 0 15px;
+        padding: 0 20px;
       }
     }
   }
 
   section {
     margin: 0 auto;
-    padding: 20px 0;
-    max-width: 1000px;
+    padding: 15px 50px;
+    max-width: 950px;
 
     @media (max-width: 768px) {
       padding: 10px 0;
@@ -194,7 +194,7 @@ const GlobalStyle = createGlobalStyle`
 
   .big-heading {
     margin: 0;
-    font-size: clamp(40px, 6vw, 90px);
+    font-size: clamp(40px, 7vw, 100px);
     line-height:1.1;
   }
 
@@ -319,8 +319,6 @@ const GlobalStyle = createGlobalStyle`
   p {
     margin: 0 0 5px 0;
     font-family: var(--font-sans);
-    font-size: 0.9vw;
-    text-transform: uppercase;
     word-spacing:1px;
     font-weight: 300;
     letter-spacing:0.4px;

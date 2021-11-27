@@ -14,17 +14,20 @@ const StyledHeroSection = styled.section`
     margin: 0 0 6px 0px;
     color: var(--black);
     font-family: var(--font-serif);
-    font-size: clamp(var(--fz-lg), 6vw, var(--fz-xl));
+    font-size: clamp(var(--fz-xl), 7vw, var(--fz-xxl));
     font-weight: 400;
 
     @media (max-width: 480px) {
       margin: 0 0 20px 2px;
     }
   }
+  h2 {
+  }
 
   h3 {
     margin-bottom: 5px;
     color: black;
+    opacity: 0.4;
     letter-spacing: -2px;
     font-family: var(--font-serif);
     font-weight: 300;
@@ -33,10 +36,16 @@ const StyledHeroSection = styled.section`
   p {
     margin: 0px 8px 0;
     max-width: 460px;
+    font-size: 14px;
     text-transform: uppercase;
     word-spacing: 1px;
     font-weight: 300;
     letter-spacing: 0.5px;
+  }
+  .notice {
+    font-size: 10px;
+    color: #b3a58b;
+    text-indent: 110px;
   }
 
   .email-link {
@@ -68,11 +77,15 @@ const Hero = () => {
   );
   const five = (
     <a href={`mailto:${email}`} className="email-link">
-      Get In Touch
+      Explore my workflows*
     </a>
   );
-
-  const items = [one, two, three, four, five];
+  const six = (
+    <p className="notice">
+      <sup>Under construction*</sup>
+    </p>
+  );
+  const items = [one, two, three, four, five, six];
 
   return (
     <StyledHeroSection>

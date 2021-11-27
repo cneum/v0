@@ -124,9 +124,8 @@ const StyledLinks = styled.div`
   .resume-button {
     ${({ theme }) => theme.mixins.smallButton};
     margin-left: 15px;
-    background-color: transparent;
-    border: 4px solid var(--pink);
-    color: var(--pink);
+    background-color: white;
+    color: gray;
     &:hover {
       background-color: black;
       color: var(--greige);

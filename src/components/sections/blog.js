@@ -185,12 +185,12 @@ const Blog = () => {
 
   const [showMore, setShowMore] = useState(false);
   const revealTitle = useRef(null);
-  const revealArchiveLink = useRef(null);
+  const revealBlogLink = useRef(null);
   const revealBlog = useRef([]);
 
   useEffect(() => {
     sr.reveal(revealTitle.current, srConfig());
-    sr.reveal(revealArchiveLink.current, srConfig());
+    sr.reveal(revealBlogLink.current, srConfig());
     revealBlog.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
   }, []);
 
@@ -276,8 +276,8 @@ const Blog = () => {
         <button className="more-button" onClick={() => setShowMore(!showMore)}>
           Show {showMore ? 'Less' : 'More'}
         </button>
-        <Link className="inline-link archive-link" to="/archive" ref={revealArchiveLink}>
-          view the archive
+        <Link className="inline-link archive-link" to="/blog" ref={revealBlogLink}>
+          view the blog archive
         </Link>
       </StyledProjectsSection>
     </section>

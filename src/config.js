@@ -3,24 +3,25 @@ module.exports = {
 
   socialMedia: [
     {
-      name: 'GitHub',
-      url: 'https://github.com/',
+      name: 'Linkedin',
+      url: 'https://www.linkedin.com/in/celinenicolas/',
     },
     {
-      name: 'Instagram',
-      url: 'https://www.instagram.com/',
+      name: 'ResearchGate',
+      url: 'https://www.researchgate.net/profile/Celine-Nicolas-2',
+      cover: './researchgate.svg',
     },
     {
       name: 'Twitter',
       url: 'https://twitter.com/',
     },
     {
-      name: 'Linkedin',
-      url: 'https://www.linkedin.com/in/celinenicolas/',
+      name: 'Instagram',
+      url: 'https://www.instagram.com/',
     },
     {
-      name: 'Codepen',
-      url: 'https://codepen.io/',
+      name: 'GitHub',
+      url: 'https://github.com/',
     },
   ],
 

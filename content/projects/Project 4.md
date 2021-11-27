@@ -3,6 +3,7 @@ date: 'YYYY-MM-DD'
 title: Project Title 4
 github: 'https://github.com/'
 external: 'https://'
+cover: './cucurbitaceae.png'
 tech:
   - Item 1
   - Item 2

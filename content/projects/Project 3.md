@@ -1,13 +1,12 @@
 ---
 date: 'YYYY-MM-DD'
-title: Project Title 3
-github: 'https://github.com/'
-external: 'https://'
+title: 'Overtightening a Resorbable Nerve Wrap: Is it Possible?'
+external: 'https://www.assh.org/annualmeeting/servlet/servlet.FileDownload?file=00P0a00000r8w17EAA'
 tech:
-  - Item 1
+  - Basic Science
   - Item 2
   - Item 3
-company: 'Company'
+company: 'CUMC'
 showInProjects: true
 ---
 
