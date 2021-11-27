@@ -23,7 +23,7 @@ const StyledTagsContainer = styled.main`
 
         .count {
           color: var(--slate);
-          font-family: Times New Roman;
+          font-family: var(--font-serif);
           font-size: var(--fz-md);
         }
       }

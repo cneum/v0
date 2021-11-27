@@ -43,8 +43,8 @@ const StyledProject = styled.li`
         grid-column: 5 / -1;
       }
       @media (max-width: 768px) {
-        grid-column: 1 / -1;
-        padding: 40px 40px 30px;
+        grid-column: 1 / -7;
+        padding: 0px 0px 0px;
       }
       @media (max-width: 480px) {
         padding: 25px 25px 20px;
@@ -67,10 +67,10 @@ const StyledProject = styled.li`
       margin-right: -10px;
     }
     .project-image {
-      grid-column: 1 / 8;
+      grid-column: 1 / -6;
 
       @media (max-width: 768px) {
-        grid-column: 1 / -1;
+        grid-column: 6 / -1;
       }
     }
   }
@@ -89,8 +89,8 @@ const StyledProject = styled.li`
       flex-direction: column;
       justify-content: center;
       height: 100%;
-      grid-column: 1 / -1;
-      padding: 40px 40px 30px;
+      grid-column: 7 / -1;
+      padding: 0px 0px 0px;
       z-index: 5;
     }
 
@@ -138,16 +138,17 @@ const StyledProject = styled.li`
     ${({ theme }) => theme.mixins.boxShadow};
     position: relative;
     z-index: 2;
-    padding: 25px;
+    padding: 12px;
     border-radius: none;
-    background-color: white;
+    background-color: var(--white);
     color: black;
-    font-size: var(--fz-lg);
+    font-size: var(--fz-xs);
 
     @media (max-width: 768px) {
       padding: 20px 0;
       background-color: transparent;
       box-shadow: none;
+      font-size: 1.5vw;
 
       &:hover {
         box-shadow: none;
@@ -221,8 +222,8 @@ const StyledProject = styled.li`
     z-index: 1;
 
     @media (max-width: 768px) {
-      grid-column: 1 / -1;
-      height: 100%;
+      grid-column: 1 / -6;
+
       opacity: 0.25;
     }
 

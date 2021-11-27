@@ -1,7 +1,7 @@
 ---
 date: '2020-10-01'
 title: 'Halloween'
-cover: './halloweenpost.jpg'
+cover: './halloweenpost.png'
 external: 'https://'
 tech:
   - Photoshop CC

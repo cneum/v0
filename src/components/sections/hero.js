@@ -3,7 +3,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
 import { email } from '@config';
 import { navDelay, loaderDelay } from '@utils';
-
+import { usePrefersReducedMotion } from '@hooks';
 const StyledHeroSection = styled.section`
   ${({ theme }) => theme.mixins.flexCenter};
   flex-direction: column;
@@ -12,8 +12,8 @@ const StyledHeroSection = styled.section`
 
   h1 {
     margin: 0 0 10px 0px;
-    color: black;
-    font-family: Times New Roman;
+    color: var(--black);
+    font-family: var(--font-serif);
     font-size: clamp(var(--fz-sm), 5vw, var(--fz-md));
     font-weight: 400;
 
@@ -26,7 +26,7 @@ const StyledHeroSection = styled.section`
     margin-bottom: 5px;
     color: black;
     letter-spacing: -2px;
-    font-family: Times New Roman;
+    font-family: var(--font-serif);
     font-weight: 300;
   }
 
@@ -34,7 +34,7 @@ const StyledHeroSection = styled.section`
     margin: 0px 0 0;
     max-width: 430px;
     color: black;
-    font-family: Times New Roman;
+    font-family: var(--font-sans);
     font-weight: 100;
   }
 
@@ -46,14 +46,18 @@ const StyledHeroSection = styled.section`
 
 const Hero = () => {
   const [isMounted, setIsMounted] = useState(false);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
+    if (prefersReducedMotion) {
+      return;
+    }
     const timeout = setTimeout(() => setIsMounted(true), navDelay);
     return () => clearTimeout(timeout);
   }, []);
 
   const one = <h1>Hi, my name is</h1>;
-  const two = <h2 className="big-heading">Celine F. Nicolas.</h2>;
+  const two = <h2 className="big-heading">Celine</h2>;
   const three = <h3 className="big-heading">I like to solve problems.</h3>;
   const four = (
     <p>
@@ -71,14 +75,22 @@ const Hero = () => {
 
   return (
     <StyledHeroSection>
-      <TransitionGroup component={null}>
-        {isMounted &&
-          items.map((item, i) => (
-            <CSSTransition key={i} classNames="fadeup" timeout={loaderDelay}>
-              <div style={{ transitionDelay: `${i + 1}00ms` }}>{item}</div>
-            </CSSTransition>
+      {prefersReducedMotion ? (
+        <>
+          {items.map((item, i) => (
+            <div key={i}>{item}</div>
           ))}
-      </TransitionGroup>
+        </>
+      ) : (
+        <TransitionGroup component={null}>
+          {isMounted &&
+            items.map((item, i) => (
+              <CSSTransition key={i} classNames="fadeup" timeout={loaderDelay}>
+                <div style={{ transitionDelay: `${i + 1}00ms` }}>{item}</div>
+              </CSSTransition>
+            ))}
+        </TransitionGroup>
+      )}
     </StyledHeroSection>
   );
 };

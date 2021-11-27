@@ -1,7 +1,7 @@
 ---
 date: '2020-09-29'
 title: 'Mockup Boo-tox Post'
-cover: './mockuppost.jpg'
+cover: './mockuppost.png'
 external: 'https://'
 tech:
   - Photoshop CC

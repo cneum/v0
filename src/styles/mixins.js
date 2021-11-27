@@ -1,12 +1,13 @@
 import { css } from 'styled-components';
 
 const button = css`
-  color: black;
+  color: var(--black);
   background-color: transparent;
-  border: 1px solid black;
+  border: 1px solid var(--black);
+  border-radius: var(--border-radius);
   padding: 0.8rem 1rem;
   font-size: var(--fz-sm);
-  font-family: Times New Roman;
+  font-family: var(--font-sans);
   line-height: 1;
   text-decoration: none;
   cursor: pointer;
@@ -94,7 +95,7 @@ const mixins = {
     border: 1px solid black;
     padding: 0.5rem 0.7rem;
     font-size: var(--fz-xs);
-    font-family: Times New Roman;
+    font-family: var(--font-serif);
     line-height: 1;
     text-decoration: none;
     cursor: pointer;
@@ -121,7 +122,7 @@ const mixins = {
     border: 1px solid black;
     padding: 0.8rem 1rem;
     font-size: var(--fz-sm);
-    font-family: times new roman;
+    font-family: var(--font-serif);
     line-height: 1;
     text-decoration: none;
     cursor: pointer;

@@ -31,7 +31,7 @@ const StyledText = styled.div`
       position: relative;
       margin-bottom: 10px;
       padding-left: 20px;
-      font-family: Times New Roman;
+      font-family: var(--font-sans);
       font-size: var(--fz-xs);
 
       &:before {

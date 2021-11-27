@@ -1,68 +1,17 @@
 import { createGlobalStyle } from 'styled-components';
-import Fonts from './fonts';
+import fonts from './fonts';
+import variables from './variables';
 import TransitionStyles from './TransitionStyles';
 import PrismStyles from './PrismStyles';
 
 const GlobalStyle = createGlobalStyle`
-  ${Fonts};
-
-  :root {
-    --dark-navy: #020c1b;
-    --navy: #0a192f;
-    --light-navy: #112240;
-    --lightest-navy: #233554;
-    --navy-shadow: rgba(2, 12, 27, 0.7);
-    --slate: #8892b0;
-    --light-slate: #a8b2d1;
-    --lightest-slate: #ccd6f6;
-    --white: #e6f1ff;
-    --green: #64ffda;
-    --green-tint: rgba(100, 255, 218, 0.1);
-    --pink: #de5285;
-    --red: #f93700;
-    --greige: #dbd5c9;
-    --dark-greige: #B2A58C;
-
-    --font-sans: 'Calibre', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
-    --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
-
-    --fz-xxs: 12px;
-    --fz-xs: 13px;
-    --fz-sm: 14px;
-    --fz-md: 16px;
-    --fz-lg: 18px;
-    --fz-xl: 20px;
-    --fz-xxl: 22px;
-    --fz-heading: 32px;
-
-    --border-radius: 4px;
-    --nav-height: 100px;
-    --nav-scroll-height: 70px;
-
-    --tab-height: 42px;
-    --tab-width: 120px;
-
-    --easing: cubic-bezier(0.645, 0.045, 0.355, 1);
-    --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
-
-    --hamburger-width: 30px;
-
-    --ham-before: top 0.1s ease-in 0.25s, opacity 0.1s ease-in;
-    --ham-before-active: top 0.1s ease-out, opacity 0.1s ease-out 0.12s;
-    --ham-after: bottom 0.1s ease-in 0.25s, transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
-    --ham-after-active: bottom 0.1s ease-out, transform 0.22s cubic-bezier(0.215, 0.61, 0.355, 1) 0.12s;
-
-    --progress: 0;
-    --track: #ccc;
-    --thumb: #f93700;
-    --height: 150vh;
-    --radius: 5;
-    --width: 10;
-  }
+  ${fonts};
+  ${variables};
 
   html {
     box-sizing: border-box;
     width: 100%;
+    scroll-behavior: smooth;
   }
 
   *,
@@ -75,9 +24,47 @@ const GlobalStyle = createGlobalStyle`
     background-color: inherit;
     color: inherit;
   }
+
+  /* Provide basic, default focus styles.*/
   :focus {
+    outline: 2px dashed var(--green);
+    outline-offset: 3px;
   }
 
+  /*
+  Remove default focus styles for mouse users ONLY if
+  :focus-visible is supported on this platform.
+*/
+:focus:not(:focus-visible) {
+  outline: none;
+  outline-offset: 0px;
+}
+
+/*
+    Optionally: If :focus-visible is supported on this
+    platform, provide enhanced focus styles for keyboard
+    focus.
+  */
+  :focus-visible {
+    outline: 2px dashed var(--green);
+    outline-offset: 3px;
+  }
+  /* Scrollbar Styles */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--dark-slate) var(--navy);
+  }
+  body::-webkit-scrollbar {
+    width: 12px;
+  }
+  body::-webkit-scrollbar-track {
+    background: var(--navy);
+  }
+  body::-webkit-scrollbar-thumb {
+    background-color: var(--dark-slate);
+    border: 3px solid var(--navy);
+    border-radius: 10px;
+  }
   .progress {
     background-color: var(--dark-greige);
     height: var(--height);
@@ -94,10 +81,6 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
   }  
 
-  :focus {
-
-  }
-
   body {
 
     margin: 0;
@@ -106,9 +89,9 @@ const GlobalStyle = createGlobalStyle`
     overflow-x: hidden;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    background-color: #dbd5c9;
-    color: black;
-    font-family: Times New Roman;
+    background-color: var(--greige);
+    color: var(--black);
+    font-family: var(--font-serif);
     font-size: var(--fz-xl);
     line-height: 1.3;
 
@@ -151,10 +134,10 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     max-width: 1600px;
     min-height: 100vh;
-    padding: 200px 150px;
+    padding: 20px 150px;
 
     @media (max-width: 1080px) {
-      padding: 200px 100px;
+      padding: 20px 100px;
     }
     @media (max-width: 768px) {
       padding: 150px 50px;
@@ -184,19 +167,19 @@ const GlobalStyle = createGlobalStyle`
     max-width: 1000px;
 
     @media (max-width: 768px) {
-      padding: 80px 0;
+      padding: 20px 0;
     }
 
     @media (max-width: 480px) {
-      padding: 60px 0;
+      padding: 20px 0;
     }
   }
 
   h1,
   h2 {
-    font-family: Times New Roman;
+    font-family: var(--font-serif);
     font-style: oblique;
-    color: black;
+    color: var(--black);
   }
   h3,
   h4,
@@ -204,18 +187,18 @@ const GlobalStyle = createGlobalStyle`
   h6 {
     margin: 0 0 10px 0;
     font-weight: 600;
-    color: black;
+    color: var(--black);
     line-height: 1.1;
   }
 
   .big-heading {
     margin: 0;
-    font-size: clamp(40px, 8vw, 80px);
+    font-size: clamp(40px, 5vw, 80px);
   }
 
   .medium-heading {
     margin: 0;
-    font-size: clamp(40px, 8vw, 60px);
+    font-size: clamp(40px, 4vw, 60px);
   }
 
   .numbered-heading {
@@ -233,8 +216,8 @@ const GlobalStyle = createGlobalStyle`
       counter-increment: section;
       content: '0' counter(section) '.';
       margin-right: 10px;
-      color: black;
-      font-family: Times New Roman;
+      color: var(--black);
+      font-family: var(--font-serif);
       font-size: clamp(var(--fz-md), 3vw, var(--fz-xl));
       font-weight: 400;
 
@@ -301,7 +284,7 @@ const GlobalStyle = createGlobalStyle`
 
     &:hover,
     &:focus {
-      color: black;
+      color: var(--black);
     }
 
     &.inline-link {
@@ -332,7 +315,9 @@ const GlobalStyle = createGlobalStyle`
 
   p {
     margin: 0 0 15px 0;
-    font-family: Times New Roman;
+    font-family: var(--font-sans);
+    font-size: 1.2vw;
+
 g
     &:last-child,
     &:last-of-type {
@@ -397,7 +382,7 @@ g
   }
 
   code {
-    font-family:  Times New Roman;
+    font-family:  var(--font-mono);
     font-size: var(--fz-md);
   }
 
@@ -407,7 +392,7 @@ g
 
   .overline {
     color: black;
-    font-family:  Times New Roman;
+    font-family:  var(--font-sans);
     font-size: var(--fz-md);
     font-weight: 400;
   }
@@ -416,7 +401,7 @@ g
     color: black;
     margin: 0 0 20px 0;
     font-size: var(--fz-md);
-    font-family:  Times New Roman;
+    font-family:  var(--font-serif);
     font-weight: 400;
     line-height: 1.5;
     @media (max-width: 1080px) {
@@ -446,7 +431,7 @@ g
 
     a {
       ${({ theme }) => theme.mixins.inlineLink};
-      font-family: times new roman;
+      font-family: var(--font-sans);
       font-size: var(--fz-sm);
       font-weight: 600;
       line-height: 1.5;
@@ -460,7 +445,7 @@ g
   }
   .footer {
     a {
-      font-family: times new roman;
+      font-family: var(--font-sans);
     }
   }
 

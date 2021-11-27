@@ -1,7 +1,7 @@
 ---
 date: '2021'
 title: 'V-Day Shot'
-cover: './vdaypost.jpg'
+cover: './vdaypost.png'
 external: 'https://'
 tech:
   - Photoshop CC
