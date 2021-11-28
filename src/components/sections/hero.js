@@ -27,7 +27,6 @@ const StyledHeroSection = styled.section`
   h3 {
     margin-bottom: 5px;
     color: black;
-    opacity: 0.4;
     letter-spacing: -2px;
     font-family: var(--font-serif);
     font-weight: 300;
@@ -50,7 +49,9 @@ const StyledHeroSection = styled.section`
 
   .email-link {
     ${({ theme }) => theme.mixins.bigButton};
+    background: var(--red);
     margin-top: 20px;
+    color: black;
   }
 `;
 
@@ -71,8 +72,8 @@ const Hero = () => {
   const three = <h3 className="medium-heading">I like to solve problems.</h3>;
   const four = (
     <p>
-      I'm a science enthusiast and serial tinkerer navigating life as if it were a pas de deux.
-      Based in NYC.
+      I'm a science enthusiast, serial tinkerer, and native New Yorker navigating life as if it were
+      a pas de deux.
     </p>
   );
   const five = (

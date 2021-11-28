@@ -66,7 +66,7 @@ const GlobalStyle = createGlobalStyle`
     border-radius: 10px;
   }
   .progress {
-    background-color: var(--dark-greige);
+    background-color: transparent;
     height: var(--height);
     overflow: hidden;
     padding: calc(1px * var(--inset));

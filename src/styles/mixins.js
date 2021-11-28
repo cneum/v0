@@ -119,8 +119,8 @@ const mixins = {
   bigButton: css`
     color: var(--red);
     background-color: white;
-    padding: 0.4rem 0.6rem;
-    font-size: 18px;
+    padding: 0.3rem 0.3rem;
+    font-size: 19px;
     font-family: var(--font-sans);
     font-weight: 300;
     line-height: 1;

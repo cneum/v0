@@ -7,7 +7,7 @@ const IconLinkedin = () => (
     viewBox="0 0 24 24"
     fill="none"
     stroke="var(--black)"
-    strokeWidth="1"
+    strokeWidth="0.3"
     strokeLinecap="round"
     strokeLinejoin="round"
     className="feather feather-linkedin"

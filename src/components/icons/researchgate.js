@@ -8,7 +8,7 @@ const IconResearchGate = () => (
     role="img"
     fill="currentColor"
     stroke="var(--black)"
-    strokeWidth="1"
+    strokeWidth="0.3"
     strokeLinecap="round"
     strokeLinejoin="round"
     className="feather feather-researchgate"

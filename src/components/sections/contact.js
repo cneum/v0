@@ -5,7 +5,7 @@ import sr from '@utils/sr';
 
 const StyledContactSection = styled.section`
   max-width: 600px;
-  margin: 0 auto 100px;
+  margin: 0 auto 50px;
   text-align: center;
 
   @media (max-width: 768px) {
@@ -49,10 +49,7 @@ const Contact = () => {
       <h2 className="numbered-heading">What’s Next?</h2>
       <h2 className="title">Get In Touch</h2>
 
-      <p>
-        My inbox is always open. Whether you have a question or just want to say hi, I'll try my
-        best to get back to you!
-      </p>
+      <p>My inbox is always open. Cheers.</p>
 
       <a className="email-link" href={`mailto:${email}`}>
         Say Hello

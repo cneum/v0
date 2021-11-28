@@ -67,8 +67,8 @@ const StyledProject = styled.li`
     position: relative;
     height: 100%;
     padding: 2rem 1.75rem;
-    background-color: var(--red);
-    -webkit-filter: grayscale(15%);
+    background-color: var(--pink);
+    -webkit-filter: grayscale(5%);
     transition: var(--transition);
   }
 

@@ -27,6 +27,7 @@ const StyledLinkWrapper = styled.div`
     text-transform: uppercase;
     letter-spacing: 0.1em;
     writing-mode: vertical-rl;
+    font-weight: 100;
 
     &:hover,
     &:focus {
