@@ -300,9 +300,9 @@ const Featured = () => {
             }
             html
           }
-        
-      
-    
+        }
+      }
+    }
   `);
 
   const featuredProjects = data.featured.edges.filter(({ node }) => node);
