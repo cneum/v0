@@ -66,7 +66,7 @@ const StyledProject = styled.li`
     align-items: flex-start;
     position: relative;
     height: 100%;
-    padding: 2rem 1.75rem;
+    padding: 1rem 1.8rem;
     background-color: var(--red);
     -webkit-filter: grayscale(15%);
     transition: var(--transition);
@@ -74,7 +74,7 @@ const StyledProject = styled.li`
 
   .project-top {
     ${({ theme }) => theme.mixins.flexBetween};
-    margin-bottom: 35px;
+    margin-bottom: 0px;
 
     .folder {
       color: black;
@@ -91,20 +91,20 @@ const StyledProject = styled.li`
 
       a {
         ${({ theme }) => theme.mixins.flexCenter};
-        padding: 5px 7px;
-        color: white;
+        padding: 0px 7px;
+        color: gray;
 
         &.external {
           svg {
-            width: 22px;
-            height: 22px;
-            margin-top: -4px;
+            width: 13px;
+            height: 13px;
+            margin-top: 0px;
           }
         }
 
         svg {
-          width: 20px;
-          height: 20px;
+          width: 13px;
+          height: 13px;
         }
       }
     }
@@ -133,8 +133,11 @@ const StyledProject = styled.li`
 
   .project-description {
     color: black;
-    font-size: 17px;
+    font-size: 12px;
 
+    p {
+      font-weight: 100;
+    }
     a {
       ${({ theme }) => theme.mixins.inlineLink};
     }
@@ -146,7 +149,7 @@ const StyledProject = styled.li`
     flex-grow: 1;
     flex-wrap: wrap;
     padding: 0;
-    margin: 20px 0 0 0;
+    margin: 10px 0 0 0;
     list-style: none;
 
     li {
@@ -204,8 +207,10 @@ const Projects = () => {
 
   return (
     <StyledProjectsSection>
-      <h2 ref={revealTitle}>Other Noteworthy Projects</h2>
-
+      <h2 ref={revealTitle}> </h2>
+      <Link className="inline-link archive-link" to="/archive" ref={revealArchiveLink}>
+        view the archive
+      </Link>
       <ul className="projects-grid">
         <TransitionGroup component={null}>
           {projectsToShow &&
@@ -218,19 +223,19 @@ const Projects = () => {
                   key={i}
                   classNames="fadeup"
                   timeout={i >= GRID_LIMIT ? (i - GRID_LIMIT) * 300 : 300}
-                  exit={false}>
+                  exit={false}
+                >
                   <StyledProject
                     key={i}
                     ref={el => (revealProjects.current[i] = el)}
                     style={{
                       transitionDelay: `${i >= GRID_LIMIT ? (i - GRID_LIMIT) * 100 : 0}ms`,
-                    }}>
+                    }}
+                  >
                     <div className="project-inner">
                       <header>
                         <div className="project-top">
-                          <div className="folder">
-                            <Icon name="Folder" />
-                          </div>
+                          <div className="folder"></div>
                           <div className="project-links">
                             {github && (
                               <a href={github} aria-label="GitHub Link">
@@ -275,9 +280,6 @@ const Projects = () => {
       <button className="more-button" onClick={() => setShowMore(!showMore)}>
         Show {showMore ? 'Less' : 'More'}
       </button>
-      <Link className="inline-link archive-link" to="/archive" ref={revealArchiveLink}>
-        view the archive
-      </Link>
     </StyledProjectsSection>
   );
 };

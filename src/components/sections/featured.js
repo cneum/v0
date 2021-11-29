@@ -143,7 +143,7 @@ const StyledProject = styled.li`
     border-radius: none;
     background-color: var(--white);
     color: black;
-    font-size: var(--fz-xs);
+    font-size: 11px;
 
     @media (max-width: 768px) {
       padding: 20px 0;
@@ -155,7 +155,9 @@ const StyledProject = styled.li`
         box-shadow: none;
       }
     }
-
+    p {
+      font-weight: 100;
+    }
     a {
       ${({ theme }) => theme.mixins.inlineLink};
     }
