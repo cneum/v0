@@ -1,11 +1,11 @@
 ---
-date: '2021'
-title: 'V-Day Shot'
+date: '2020-10-02'
+title: 'ASSH Conference Podium Presentation'
 cover: './vdaypost.png'
-external: 'https://'
+external: 'https://www.assh.org/annualmeeting/'
 tech:
-  - Photoshop CC
+  - Basic Science
 showInProjects: true
 ---
 
-The syringe takes center stage of this minimalistic Instagram post, emphasizing the post's call-to-action and conveying the premium quality services offered by leading provides at an Upper East Side practice. The stark contrast between the bold Valentine's Day red tray detailing and the shiny silver syringe encompasses sophistication and richness, appealing to audiences who value living their healthy, confident, and beautiful selves.
+My abstract was accepted as a Podium Presentation for Clinical Paper Session 3 at the 75th Annual Meeting of the American Society for Surgery of the Hand. This was ASSH's first virtual meeting, due to the COVID-19 pandemic. This abstract was the first report on the use of improperly sized resorbable nerve wraps in a noninjury animal nerve model.
