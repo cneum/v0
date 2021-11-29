@@ -17,7 +17,7 @@ const StyledProjectsSection = styled.section`
 
   .archive-link {
     font-size: var(--fz-sm);
-    padding: 10px 0px;
+    padding: 0px 0px;
     &:after {
       bottom: 0.1em;
     }
@@ -29,7 +29,7 @@ const StyledProjectsSection = styled.section`
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: 15px;
     position: relative;
-    margin-top: 50px;
+    margin-top: 20px;
 
     @media (max-width: 1080px) {
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -79,25 +79,23 @@ const StyledProject = styled.li`
     .folder {
       color: black;
       svg {
-        width: 40px;
-        height: 40px;
       }
     }
 
     .project-links {
       display: flex;
       align-items: center;
-      margin-right: -10px;
+      margin-right: -7px;
 
       a {
         ${({ theme }) => theme.mixins.flexCenter};
-        padding: 0px 7px;
-        color: gray;
+        padding: 0px;
+        color: black;
 
         &.external {
           svg {
-            width: 13px;
-            height: 13px;
+            width: 15px;
+            height: 15px;
             margin-top: 0px;
           }
         }
@@ -113,7 +111,7 @@ const StyledProject = styled.li`
   .project-title {
     margin: 0 0 10px;
     color: black;
-    font-size: var(--fz-xxl);
+    font-size: var(--fz-xl);
 
     a {
       position: static;
@@ -137,6 +135,7 @@ const StyledProject = styled.li`
 
     p {
       font-weight: 100;
+      padding-bottom: 5px;
     }
     a {
       ${({ theme }) => theme.mixins.inlineLink};
@@ -200,7 +199,7 @@ const Projects = () => {
     revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
   }, []);
 
-  const GRID_LIMIT = 6;
+  const GRID_LIMIT = 4;
   const projects = data.projects.edges.filter(({ node }) => node);
   const firstSix = projects.slice(0, GRID_LIMIT);
   const projectsToShow = showMore ? projects : firstSix;
