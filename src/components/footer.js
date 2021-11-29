@@ -51,6 +51,7 @@ const StyledCredit = styled.div`
 
   .github-stats {
     margin-top: 10px;
+    color: var(--greige);
 
     & > span {
       display: inline-flex;
@@ -110,11 +111,9 @@ const Footer = () => {
           {githubInfo.stars && githubInfo.forks && (
             <div className="github-stats">
               <span>
-                <Icon name="Star" />
                 <span>{githubInfo.stars.toLocaleString()}</span>
               </span>
               <span>
-                <Icon name="Fork" />
                 <span>{githubInfo.forks.toLocaleString()}</span>
               </span>
             </div>
