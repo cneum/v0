@@ -176,7 +176,7 @@ const About = () => {
             <p></p>
 
             <p>
-              When I'm not in front of a computer screen, I'm probably rock climbing, eating mac &
+              Outside the office, you might find me rock climbing, eating mac &
               cheese, or painting.
             </p>
             <p></p>
