@@ -73,7 +73,7 @@ const Hero = () => {
   const four = (
     <p>
       I'm a science enthusiast, serial tinkerer, and native New Yorker navigating life as if it were
-      a pas de deux.
+      a pas de deux dance.
     </p>
   );
   const five = (

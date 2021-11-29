@@ -47,6 +47,10 @@ const StyledText = styled.div`
       }
     }
   }
+  p {
+    font-size: var(--fz-xxs);
+    letter-spacing: 0.1px;
+  }
 `;
 const StyledPic = styled.div`
   position: relative;
@@ -136,7 +140,7 @@ const About = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, []);
 
-  const skills = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
+  const skills = ['git', 'SQL', 'HTML/CSS', 'Python', 'JavaScript', 'R'];
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
@@ -147,9 +151,30 @@ const About = () => {
           <div>
             <p>Hello! I'm Celine.</p>
 
-            <p></p>
+            <p>
+              I’m a Medical Assistant Team Lead in private practice where I specialize in driving a
+              smooth patient care experience through clinical, operational, clerical, and
+              administrative duties. Early on, I realized I love to help people from my experiences
+              growing up as a dancer, tutor, retail associate, and inspired by my mom who’s a nurse.
+              I set my eyes on medicine for the opportunity to do so and lead by example.
+            </p>
+            <p>
+              While working in direct patient care and basic science research, I realized that my
+              favorite parts of medicine were building relationships and solving meaningful complex
+              problems. And although you can be creative in medicine, it’s very hard to improve
+              healthcare from the clinical side. That takes innovation, technology. This distinction
+              led me to pursue a technical role.
+            </p>
+            <p>
+              It was current supervisors who recognized my technical aptitude and first mentioned
+              the idea of technical support engineering. After connecting with close friends who are
+              dedicated support engineers and data engineers and doing my research, I felt it was
+              the perfect fit. I am very excited to solve problems with people and grow my technical
+              skills in a role where I can keep in touch with my clinical and research expertise.
+            </p>
 
-            <p>Here are:</p>
+            <p></p>
+            <p>Here are technologies I'm working with:</p>
           </div>
 
           <ul className="skills-list">
