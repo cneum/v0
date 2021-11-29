@@ -48,7 +48,7 @@ const StyledText = styled.div`
     }
   }
   p {
-    font-size: var(--fz-xxs);
+    font-size: var(--fz-xxx);
     letter-spacing: 0.1px;
   }
 `;
@@ -173,6 +173,12 @@ const About = () => {
               skills in a role where I can keep in touch with my clinical and research expertise.
             </p>
 
+            <p></p>
+
+            <p>
+              When I'm not in front of a computer screen, I'm probably rock climbing, eating mac &
+              cheese, or painting.
+            </p>
             <p></p>
             <p>Here are technologies I'm working with:</p>
           </div>
