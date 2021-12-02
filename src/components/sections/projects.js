@@ -10,14 +10,16 @@ const StyledProjectsSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  section {
+  }
   h2 {
     font-size: clamp(24px, 5vw, var(--fz-heading));
   }
 
   .archive-link {
+    ${({ theme }) => theme.mixins.bigButton};
     font-size: var(--fz-sm);
-    padding: 0px 0px;
+    padding: 0px 2px 0px;
     &:after {
       bottom: 0.1em;
     }
@@ -29,7 +31,7 @@ const StyledProjectsSection = styled.section`
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: 15px;
     position: relative;
-    margin-top: 20px;
+    margin-top: 22px;
 
     @media (max-width: 1080px) {
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -66,7 +68,7 @@ const StyledProject = styled.li`
     align-items: flex-start;
     position: relative;
     height: 100%;
-    padding: 1rem 1.8rem;
+    padding: 0.5rem 0.9rem;
     background-color: var(--red);
     -webkit-filter: grayscale(15%);
     transition: var(--transition);
@@ -111,7 +113,7 @@ const StyledProject = styled.li`
   .project-title {
     margin: 0 0 10px;
     color: black;
-    font-size: var(--fz-xl);
+    font-size: var(--fz-md);
 
     a {
       position: static;
@@ -131,15 +133,40 @@ const StyledProject = styled.li`
 
   .project-description {
     color: black;
-    font-size: 12px;
-
+    font-size: 11px;
+    overflow-y: scroll;
+    height:200px;
+    scroll-behavior: smooth;
+    ::-webkit-scrollbar {
+      width: 3px;
+      background-color: transparent;
+    }
+    ::-webkit-scrollbar-track {
+      background-color:transparent;
+      border-radius: 1px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--dred);
+      border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background-color: red;
+    }
     p {
       font-weight: 100;
       padding-bottom: 5px;
+      height:100%;
     }
-    a {
-      ${({ theme }) => theme.mixins.inlineLink};
+    img {
+      filter: grayscale(100%);
+      &:hover {filter:none;}
     }
+    a { 
+      filter: opacity(0.5) drop-shadow(0 0 0 red);
+      &:hover {filter:none;}
+    }
+   
+}
   }
 
   .project-tech-list {
@@ -148,14 +175,14 @@ const StyledProject = styled.li`
     flex-grow: 1;
     flex-wrap: wrap;
     padding: 0;
-    margin: 10px 0 0 0;
+    margin: 6px 0 0 0;
     list-style: none;
 
     li {
       font-style: oblique;
-      font-size: var(--fz-xxs);
+      font-size: var(--fz-xxx);
       line-height: 1.75;
-
+      color: var(--greige);
       &:not(:last-of-type) {
         margin-right: 15px;
       }
@@ -206,10 +233,10 @@ const Projects = () => {
 
   return (
     <StyledProjectsSection>
-      <h2 ref={revealTitle}> </h2>
       <Link className="inline-link archive-link" to="/archive" ref={revealArchiveLink}>
         view the archive
       </Link>
+      <button className="archive-link"></button>
       <ul className="projects-grid">
         <TransitionGroup component={null}>
           {projectsToShow &&

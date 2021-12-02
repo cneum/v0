@@ -1,6 +1,6 @@
 ---
 date: '2019'
-title: 'Autumn Cucurbitaceae Still Life'
+title: 'Autumn Cucurbitaceae'
 cover: './cucurbitaceae.png'
 external: 'https://'
 tech:
@@ -10,5 +10,6 @@ tech:
 showInProjects: true
 ---
 
+<img src="cucurbitaceae.png" alt="" style="float: initial;filter: grayscale(100%);"/>
+
 Still life drawing of of gourds, squash, and pumpkins.
-<img src="cucurbitaceae.png" alt="" style="float: initial;"/>

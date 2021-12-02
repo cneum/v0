@@ -23,11 +23,10 @@ const StyledText = styled.div`
     display: grid;
     grid-template-columns: repeat(2, minmax(140px, 200px));
     padding: 0;
-    margin: 20px 0 0 0;
+    margin: 0px 0 0 0;
     overflow: hidden;
     list-style: none;
     line-height: 1.6;
-    font-style: italic;
 
     li {
       position: relative;
@@ -35,6 +34,8 @@ const StyledText = styled.div`
       padding-left: 15px;
       font-family: var(--font-serif);
       font-size: var(--fz-xs);
+      font-style: italic;
+      color: white;
 
       &:before {
         content: '▸';
@@ -48,8 +49,10 @@ const StyledText = styled.div`
     }
   }
   p {
-    font-size: var(--fz-xxx);
-    letter-spacing: 0.1px;
+    font-size: 10.5px;
+    letter-spacing: 0px;
+    line-height: 0.95;
+    margin-bottom: 10px;
   }
 `;
 const StyledPic = styled.div`
@@ -172,14 +175,9 @@ const About = () => {
               the perfect fit. I am very excited to solve problems with people and grow my technical
               skills in a role where I can keep in touch with my clinical and research expertise.
             </p>
-
-            <p></p>
-
             <p>
-              Outside the office, you might find me rock climbing, eating mac &
-              cheese, or painting.
+              Outside the office, you might find me rock climbing, eating mac & cheese, or painting.
             </p>
-            <p></p>
             <p>Here are technologies I'm working with:</p>
           </div>
 

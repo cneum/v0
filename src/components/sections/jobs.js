@@ -7,7 +7,7 @@ import { KEY_CODES } from '@utils';
 import sr from '@utils/sr';
 
 const StyledJobsSection = styled.section`
-  max-width: 850px;
+  max-width: 870px;
 
   .inner {
     display: flex;
@@ -89,7 +89,7 @@ const StyledTabButton = styled.button`
 
   &:hover,
   &:focus {
-    background-color: black;
+    background-color: white;
   }
 `;
 
@@ -148,7 +148,7 @@ const StyledTabPanel = styled.div`
   }
   a {
     font-weight: 600;
-    color: var(--pink);
+    color: gray;
     font-size: var(--fz-md);
     margin: 5px 0 0;
   }

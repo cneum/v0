@@ -11,7 +11,7 @@ const StyledProjectsGrid = styled.ul`
 
   a {
     position: relative;
-    z-index: 1;
+    z-index: 2;
   }
 `;
 
@@ -144,12 +144,12 @@ const StyledProject = styled.li`
     background-color: var(--white);
     color: black;
     font-size: 11px;
+    overflow: auto;
 
     @media (max-width: 768px) {
       padding: 20px 0;
       background-color: transparent;
       box-shadow: none;
-      font-size: 1.5vw;
 
       &:hover {
         box-shadow: none;
@@ -157,6 +157,9 @@ const StyledProject = styled.li`
     }
     p {
       font-weight: 100;
+      @media (max-width: 768px) {
+        font-weight: 300;
+      }
     }
     a {
       ${({ theme }) => theme.mixins.inlineLink};
@@ -234,7 +237,7 @@ const StyledProject = styled.li`
       background-color: none;
       border-radius: var(--border-radius);
       vertical-align: middle;
-
+      filter: opacity(0.5) drop-shadow(0 0 0 var(--greige));
       &:hover,
       &:focus {
         background: transparent;
@@ -266,7 +269,7 @@ const StyledProject = styled.li`
     .img {
       border-radius: none;
       mix-blend-mode: multiply;
-      filter: none;
+      filter: grayscale(100%);
 
       @media (max-width: 768px) {
         object-fit: cover;
