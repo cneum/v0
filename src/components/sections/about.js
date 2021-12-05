@@ -7,7 +7,7 @@ import sr from '@utils/sr';
 
 const StyledAboutSection = styled.section`
   max-width: 900px;
-
+  padding-bottom: 35px;
   .inner {
     display: grid;
     grid-template-columns: 3fr 2fr;

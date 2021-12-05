@@ -10,18 +10,18 @@ const StyledProjectsSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  section {
-  }
+  padding-bottom: 35px;
   h2 {
     font-size: clamp(24px, 5vw, var(--fz-heading));
   }
 
   .archive-link {
-    ${({ theme }) => theme.mixins.bigButton};
+    ${({ theme }) => theme.mixins.button};
     font-size: var(--fz-sm);
-    padding: 0px 2px 0px;
+    padding: 4px 2px;
+    margin: 35px 0 10px;
     &:after {
-      bottom: 0.1em;
+      bottom: 0;
     }
   }
 
@@ -29,7 +29,7 @@ const StyledProjectsSection = styled.section`
     ${({ theme }) => theme.mixins.resetList};
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-gap: 15px;
+    grid-gap: 17px;
     position: relative;
     margin-top: 22px;
 
@@ -46,6 +46,8 @@ const StyledProjectsSection = styled.section`
   .more-button {
     ${({ theme }) => theme.mixins.button};
     margin: 40px auto 0;
+    background: var(--red);
+    color: var(--black);
   }
 `;
 
@@ -57,7 +59,7 @@ const StyledProject = styled.li`
   &:hover,
   &:focus-within {
     .project-inner {
-      transform: translateY(-7px);
+      transform: translateY(-3px);
     }
   }
 
@@ -68,7 +70,7 @@ const StyledProject = styled.li`
     align-items: flex-start;
     position: relative;
     height: 100%;
-    padding: 0.5rem 0.9rem;
+    padding: 9px 20px;
     background-color: var(--red);
     -webkit-filter: grayscale(15%);
     transition: var(--transition);
@@ -79,7 +81,6 @@ const StyledProject = styled.li`
     margin-bottom: 0px;
 
     .folder {
-      color: black;
       svg {
       }
     }
@@ -92,7 +93,7 @@ const StyledProject = styled.li`
       a {
         ${({ theme }) => theme.mixins.flexCenter};
         padding: 0px;
-        color: black;
+        color: var(--dred);
 
         &.external {
           svg {
@@ -165,7 +166,6 @@ const StyledProject = styled.li`
       filter: opacity(0.5) drop-shadow(0 0 0 red);
       &:hover {filter:none;}
     }
-   
 }
   }
 
@@ -183,6 +183,7 @@ const StyledProject = styled.li`
       font-size: var(--fz-xxx);
       line-height: 1.75;
       color: var(--greige);
+
       &:not(:last-of-type) {
         margin-right: 15px;
       }
@@ -234,9 +235,8 @@ const Projects = () => {
   return (
     <StyledProjectsSection>
       <Link className="inline-link archive-link" to="/archive" ref={revealArchiveLink}>
-        view the archive
+        view archive
       </Link>
-      <button className="archive-link"></button>
       <ul className="projects-grid">
         <TransitionGroup component={null}>
           {projectsToShow &&
@@ -304,7 +304,7 @@ const Projects = () => {
       </ul>
 
       <button className="more-button" onClick={() => setShowMore(!showMore)}>
-        Show {showMore ? 'Less' : 'More'}
+        SHOW {showMore ? 'LESS' : 'MORE'}
       </button>
     </StyledProjectsSection>
   );

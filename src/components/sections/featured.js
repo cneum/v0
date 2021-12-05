@@ -23,7 +23,7 @@ const StyledProject = styled.li`
   align-items: center;
 
   &:not(:last-of-type) {
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 
     @media (max-width: 768px) {
       margin-bottom: 70px;
@@ -171,14 +171,16 @@ const StyledProject = styled.li`
     flex-wrap: wrap;
     position: relative;
     z-index: 2;
-    margin: 25px 0 10px;
+    margin: 15px 0 10px;
     padding: 0;
     list-style: none;
 
     li {
       margin: 0 20px 5px 0;
-      color: black;
-      font-size: var(--fz-xs);
+      color: gray;
+      font-style: oblique;
+      font-size: var(--fz-xxx);
+      line-height: 1.75;
       white-space: nowrap;
     }
 
@@ -202,19 +204,17 @@ const StyledProject = styled.li`
 
     a {
       ${({ theme }) => theme.mixins.flexCenter};
-      padding: 10px;
+      padding: 0 10px 0;
 
       &.external {
         svg {
-          width: 22px;
-          height: 22px;
-          margin-top: -4px;
+          width: 15px;
+          height: 15px;
+          margin-top: 0px;
         }
       }
 
       svg {
-        width: 20px;
-        height: 20px;
         color: var(--dark-greige);
       }
     }
@@ -237,13 +237,8 @@ const StyledProject = styled.li`
       background-color: none;
       border-radius: var(--border-radius);
       vertical-align: middle;
-      filter: opacity(0.5) drop-shadow(0 0 0 var(--greige));
-      &:hover,
-      &:focus {
-        background: transparent;
-        outline: 0;
 
-        &:before,
+      &:hover {
         .img {
           background: transparent;
           filter: none;
@@ -264,12 +259,17 @@ const StyledProject = styled.li`
         background-color: none;
         mix-blend-mode: none;
       }
+      .img {
+        background: transparent;
+        filter: opacity(0.5) drop-shadow(0 0 0 var(--greige));
+      }
     }
 
     .img {
-      border-radius: none;
-      mix-blend-mode: multiply;
       filter: grayscale(100%);
+      &:hover {
+        filter: none;
+      }
 
       @media (max-width: 768px) {
         object-fit: cover;
@@ -335,7 +335,7 @@ const Featured = () => {
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
                 <div className="project-content">
                   <div>
-                    <p className="project-overline">Featured Artwork</p>
+                    <p className="project-overline">Featured Work</p>
 
                     <h3 className="project-title">
                       <a href={external}>{title}</a>

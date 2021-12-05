@@ -8,8 +8,8 @@ const StyledFooter = styled.footer`
   ${({ theme }) => theme.mixins.flexCenter};
   flex-direction: column;
   height: auto;
-  min-height: 70px;
-  padding: 15px;
+  min-height: 30px;
+  padding: 5px;
   text-align: center;
 `;
 
@@ -41,9 +41,9 @@ const StyledSocialLinks = styled.div`
 
 const StyledCredit = styled.div`
   color: var(--dark-greige);
-  font-family: Times New Roman;
-  font-size: var(--fz-xxs);
-  line-height: 1;
+  font-family: var(--font-sans);
+  font-size: var(--fz-xxx);
+  font-style: italic;
 
   a {
     padding: 10px;
@@ -106,7 +106,7 @@ const Footer = () => {
 
       <StyledCredit tabindex="-1">
         <a href="https://github.com/bchiang7/v4">
-          <div>© 2021 Created with Open Source Project by Brittany Chang</div>
+          <div>© 2021 Designed with Open Source Project by @bchang</div>
 
           {githubInfo.stars && githubInfo.forks && (
             <div className="github-stats">

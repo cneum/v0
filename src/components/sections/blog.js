@@ -10,16 +10,20 @@ const StyledProjectsSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  padding-bottom: 45px;
   h2 {
     font-size: clamp(24px, 5vw, var(--fz-heading));
   }
 
-  .archive-link {
+  .blog-link {
+    ${({ theme }) => theme.mixins.button};
+    background-color: var(--dark-greige);
+    color: black;
     font-size: var(--fz-sm);
-    padding: 10px 0px;
+    padding: 4px 2px;
+    margin: 15px 0;
     &:after {
-      bottom: 0.1em;
+      bottom: 0;
     }
   }
 
@@ -27,9 +31,9 @@ const StyledProjectsSection = styled.section`
     ${({ theme }) => theme.mixins.resetList};
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-gap: 15px;
+    grid-gap: 17px;
     position: relative;
-    margin-top: 50px;
+    margin-top: 22px;
 
     @media (max-width: 1080px) {
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -44,6 +48,8 @@ const StyledProjectsSection = styled.section`
   .more-button {
     ${({ theme }) => theme.mixins.button};
     margin: 40px auto 0;
+    background: var(--pink);
+    color: gray;
   }
 `;
 
@@ -55,7 +61,7 @@ const StyledProject = styled.li`
   &:hover,
   &:focus-within {
     .project-inner {
-      transform: translateY(-7px);
+      transform: translateY(-3px);
     }
   }
 
@@ -66,7 +72,7 @@ const StyledProject = styled.li`
     align-items: flex-start;
     position: relative;
     height: 100%;
-    padding: 2rem 1.75rem;
+    padding: 9px 20px;
     background-color: var(--pink);
     -webkit-filter: grayscale(5%);
     transition: var(--transition);
@@ -74,37 +80,34 @@ const StyledProject = styled.li`
 
   .project-top {
     ${({ theme }) => theme.mixins.flexBetween};
-    margin-bottom: 35px;
+    margin-bottom: 0px;
 
     .folder {
-      color: black;
       svg {
-        width: 40px;
-        height: 40px;
       }
     }
 
     .project-links {
       display: flex;
       align-items: center;
-      margin-right: -10px;
+      margin-right: -7px;
 
       a {
         ${({ theme }) => theme.mixins.flexCenter};
-        padding: 5px 7px;
-        color: white;
+        padding: 0px;
+        color: gray;
 
         &.external {
           svg {
-            width: 22px;
-            height: 22px;
-            margin-top: -4px;
+            width: 15px;
+            height: 15px;
+            margin-top: 0px;
           }
         }
 
         svg {
-          width: 20px;
-          height: 20px;
+          width: 13px;
+          height: 13px;
         }
       }
     }
@@ -113,7 +116,7 @@ const StyledProject = styled.li`
   .project-title {
     margin: 0 0 10px;
     color: black;
-    font-size: var(--fz-xxl);
+    font-size: var(--fz-md);
 
     a {
       position: static;
@@ -133,10 +136,41 @@ const StyledProject = styled.li`
 
   .project-description {
     color: black;
-    font-size: 17px;
-
+    font-size: 11px;
+    overflow-y: scroll;
+    height: 200px;
+    scroll-behavior: smooth;
+    ::-webkit-scrollbar {
+      width: 3px;
+      background-color: transparent;
+    }
+    ::-webkit-scrollbar-track {
+      background-color: transparent;
+      border-radius: 1px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--dred);
+      border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background-color: red;
+    }
+    p {
+      font-weight: 100;
+      padding-bottom: 5px;
+      height: 100%;
+    }
+    img {
+      filter: grayscale(100%);
+      &:hover {
+        filter: none;
+      }
+    }
     a {
-      ${({ theme }) => theme.mixins.inlineLink};
+      filter: opacity(0.5) drop-shadow(0 0 0 red);
+      &:hover {
+        filter: none;
+      }
     }
   }
 
@@ -146,13 +180,14 @@ const StyledProject = styled.li`
     flex-grow: 1;
     flex-wrap: wrap;
     padding: 0;
-    margin: 20px 0 0 0;
+    margin: 6px 0 0 0;
     list-style: none;
 
     li {
       font-style: oblique;
-      font-size: var(--fz-xxs);
+      font-size: var(--fz-xxx);
       line-height: 1.75;
+      color: white;
 
       &:not(:last-of-type) {
         margin-right: 15px;
@@ -205,12 +240,15 @@ const Blog = () => {
         <h2 className="numbered-heading" ref={revealTitle}>
           My Blog
         </h2>
+        <Link className="inline-link blog-link" to="/blog" ref={revealBlogLink}>
+          view blog archive
+        </Link>
         <ul className="projects-grid">
           <TransitionGroup component={null}>
             {blogToShow &&
               blogToShow.map(({ node }, i) => {
                 const { frontmatter, html } = node;
-                const { github, external, title, tech } = frontmatter;
+                const { external, title, tech } = frontmatter;
 
                 return (
                   <CSSTransition
@@ -229,15 +267,8 @@ const Blog = () => {
                       <div className="project-inner">
                         <header>
                           <div className="project-top">
-                            <div className="folder">
-                              <Icon name="Folder" />
-                            </div>
+                            <div className="folder"></div>
                             <div className="project-links">
-                              {github && (
-                                <a href={github} aria-label="GitHub Link">
-                                  <Icon name="GitHub" />
-                                </a>
-                              )}
                               {external && (
                                 <a href={external} aria-label="External Link" className="external">
                                   <Icon name="External" />
@@ -274,11 +305,8 @@ const Blog = () => {
         </ul>
 
         <button className="more-button" onClick={() => setShowMore(!showMore)}>
-          Show {showMore ? 'Less' : 'More'}
+          SHOW {showMore ? 'LESS' : 'MORE'}
         </button>
-        <Link className="inline-link archive-link" to="/blog" ref={revealBlogLink}>
-          view the blog archive
-        </Link>
       </StyledProjectsSection>
     </section>
   );

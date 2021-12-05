@@ -1,6 +1,6 @@
 ---
 date: '2019'
-title: 'Autumn Cucurbitaceae'
+title: 'Autumn Cucurbitaceae Drawing'
 cover: './cucurbitaceae.png'
 external: 'https://'
 tech:

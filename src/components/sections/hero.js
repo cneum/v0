@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
-import { email } from '@config';
 import { navDelay, loaderDelay } from '@utils';
 import { usePrefersReducedMotion } from '@hooks';
 const StyledHeroSection = styled.section`
@@ -47,7 +46,7 @@ const StyledHeroSection = styled.section`
     text-indent: 110px;
   }
 
-  .email-link {
+  .hero-link {
     ${({ theme }) => theme.mixins.bigButton};
     background: var(--red);
     margin-top: 20px;
@@ -77,7 +76,7 @@ const Hero = () => {
     </p>
   );
   const five = (
-    <a href={`mailto:${email}`} className="email-link">
+    <a href="https://www.celinenicolas.com/" className="hero-link">
       Explore my workflows*
     </a>
   );

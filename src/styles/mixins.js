@@ -2,18 +2,21 @@ import { css } from 'styled-components';
 
 const button = css`
   color: var(--black);
-  background-color: transparent;
-  border: 1px solid var(--black);
+  background-color: var(--dark-greige);
+  font-style: italic;
   border-radius: var(--border-radius);
-  padding: 0.8rem 1rem;
+  padding: 0.3rem 6rem;
   font-size: var(--fz-sm);
   font-family: var(--font-sans);
+  font-weight: 200;
   line-height: 1;
   text-decoration: none;
   cursor: pointer;
   transition: var(--transition);
 
-  &:hover,
+  &:hover {
+    border: 1px solid var(--black);
+  }
   &:focus,
   &:active {
     background-color: var(--red);
@@ -118,9 +121,7 @@ const mixins = {
 
   bigButton: css`
     color: var(--red);
-    background-color: white;
     padding: 0.3rem 0.3rem;
-    font-size: 19px;
     font-family: var(--font-sans);
     font-weight: 300;
     line-height: 1;

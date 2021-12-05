@@ -18,6 +18,7 @@ const variables = css`
     --dred: #a42a04;
     --greige: #dbd5c9;
     --dark-greige: #c7bdaa;
+    --darker-greige: #6f6249;
     --black: #000000;
 
     --font-sans: 'Helvetic Neue', -apple-system, system-ui, sans-serif;

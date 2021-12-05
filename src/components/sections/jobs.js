@@ -8,7 +8,7 @@ import sr from '@utils/sr';
 
 const StyledJobsSection = styled.section`
   max-width: 870px;
-
+  padding-bottom: 35px;
   .inner {
     display: flex;
 

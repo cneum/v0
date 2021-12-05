@@ -1,6 +1,6 @@
 ---
 date: '2019'
-title: 'Flute Still Life'
+title: 'Flute Still Life Painting'
 cover: './flute.png'
 external: 'https://'
 tech:

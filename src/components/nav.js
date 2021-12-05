@@ -17,7 +17,6 @@ const StyledHeader = styled.header`
   padding: 0px 50px;
   width: 100%;
   height: var(--nav-height);
-  background: transparent;
   filter: none !important;
   pointer-events: auto !important;
   user-select: auto !important;
@@ -30,6 +29,7 @@ const StyledHeader = styled.header`
     css`
       height: var(--nav-scroll-height);
       transform: translateY(0px);
+      background-color: var(--greige);
     `};
 
   ${props =>
@@ -38,6 +38,7 @@ const StyledHeader = styled.header`
     css`
       height: var(--nav-scroll-height);
       transform: translateY(calc(var(--nav-scroll-height) * -1));
+      background-color: var(--greige);
     `};
 
   @media (max-width: 1080px) {

@@ -5,7 +5,7 @@ import sr from '@utils/sr';
 
 const StyledContactSection = styled.section`
   max-width: 600px;
-  margin: 0 auto 50px;
+  margin: 0 auto 10px;
   text-align: center;
 
   @media (max-width: 768px) {
@@ -36,7 +36,12 @@ const StyledContactSection = styled.section`
 
   .email-link {
     ${({ theme }) => theme.mixins.bigButton};
-    margin-top: 50px;
+    margin: 0px 0 25px;
+    font-size: 12px;
+    padding-top: 0;
+  }
+  p {
+    padding: 35px 0 5px;
   }
 `;
 
@@ -47,12 +52,11 @@ const Contact = () => {
   return (
     <StyledContactSection id="contact" ref={revealContainer}>
       <h2 className="numbered-heading">What’s Next?</h2>
-      <h2 className="title">Get In Touch</h2>
 
       <p>My inbox is always open. Cheers.</p>
 
       <a className="email-link" href={`mailto:${email}`}>
-        Say Hello
+        Click Here to Get in Touch
       </a>
     </StyledContactSection>
   );
