@@ -33,15 +33,21 @@ const StyledContactSection = styled.section`
   .title {
     font-size: clamp(40px, 5vw, 60px);
   }
-
+  h2 {margin-bottom: 50px;}
   .email-link {
     ${({ theme }) => theme.mixins.bigButton};
-    margin: 0px 0 25px;
+    background-color: var(--red);
+    border: 1px solid var(--black);
+    margin: 0px 0 50px;
     font-size: 12px;
-    padding-top: 0;
+    a {color:black;}
+    &:hover {
+      color: black;
+      border: 2px solid black;
+      background-color: var(--dred);
   }
   p {
-    padding: 35px 0 5px;
+    padding: 35px 0 0px;
   }
 `;
 

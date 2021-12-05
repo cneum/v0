@@ -106,7 +106,7 @@ const Footer = () => {
 
       <StyledCredit tabindex="-1">
         <a href="https://github.com/bchiang7/v4">
-          <div>© 2021 Designed with Open Source Project by @bchang</div>
+          <div>Adapted from @bchang Gatsby.js framework ©2021 </div>
 
           {githubInfo.stars && githubInfo.forks && (
             <div className="github-stats">

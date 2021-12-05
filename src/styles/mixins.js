@@ -120,7 +120,7 @@ const mixins = {
   `,
 
   bigButton: css`
-    color: var(--red);
+    color: var(--black);
     padding: 0.3rem 0.3rem;
     font-family: var(--font-sans);
     font-weight: 300;

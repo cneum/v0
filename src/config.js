@@ -11,6 +11,14 @@ module.exports = {
       url: 'https://www.researchgate.net/profile/Celine-Nicolas-2',
       cover: './researchgate.svg',
     },
+    {
+      name: 'Twitter',
+      url: 'https://twitter.com/celinefelisa',
+    },
+    {
+      name: 'Instagram',
+      url: 'https://www.instagram.com/__cenic',
+    },
   ],
 
   navLinks: [
@@ -23,7 +31,7 @@ module.exports = {
       url: '/#jobs',
     },
     {
-      name: 'Work',
+      name: 'Works',
       url: '/#projects',
     },
     {
