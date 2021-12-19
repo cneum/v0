@@ -10,7 +10,7 @@ const StyledProjectsSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 35px;
+  padding-bottom: 45px;
   h2 {
     font-size: clamp(24px, 5vw, var(--fz-heading));
   }
@@ -19,7 +19,7 @@ const StyledProjectsSection = styled.section`
     ${({ theme }) => theme.mixins.button};
     font-size: var(--fz-sm);
     padding: 4px 2px;
-    margin: 35px 0 10px;
+    margin: 0px 0 10px;
     &:after {
       bottom: 0;
     }
@@ -235,7 +235,7 @@ const Projects = () => {
   return (
     <StyledProjectsSection>
       <Link className="inline-link archive-link" to="/archive" ref={revealArchiveLink}>
-        view archive
+        view projects archive
       </Link>
       <ul className="projects-grid">
         <TransitionGroup component={null}>

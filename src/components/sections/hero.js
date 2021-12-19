@@ -8,7 +8,8 @@ const StyledHeroSection = styled.section`
   flex-direction: column;
   align-items: flex-start;
   min-height: 100vh;
-
+  padding-left: 2%;
+  padding-right: 2%;
   h1 {
     margin: 0 0 6px 0px;
     color: var(--black);
@@ -51,6 +52,7 @@ const StyledHeroSection = styled.section`
     background: var(--red);
     margin-top: 20px;
     color: black;
+    border: 1px solid black;
   }
 `;
 

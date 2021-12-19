@@ -164,9 +164,9 @@ const GlobalStyle = createGlobalStyle`
   section {
     margin: 0 auto;
     max-width: 970px;
-
     @media (max-width: 768px) {
       padding: 10px 0;
+        //top bott then left right
     }
 
     @media (max-width: 480px) {

@@ -5,7 +5,6 @@ const button = css`
   background-color: var(--dark-greige);
   font-style: italic;
   border-radius: var(--border-radius);
-  padding: 0.3rem 6rem;
   font-size: var(--fz-sm);
   font-family: var(--font-sans);
   font-weight: 200;

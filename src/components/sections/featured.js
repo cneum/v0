@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import { Link, useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 import sr from '@utils/sr';
@@ -8,10 +8,20 @@ import { Icon } from '@components/icons';
 
 const StyledProjectsGrid = styled.ul`
   ${({ theme }) => theme.mixins.resetList};
-
+  text-align: center;
   a {
     position: relative;
     z-index: 2;
+  }
+  .archive-link {
+    ${({ theme }) => theme.mixins.button};
+    font-size: var(--fz-sm);
+    padding: 4px 2px;
+    margin: 5px 0 10px;
+    color: var(--dred);
+    &:after {
+      bottom: 0;
+    }
   }
 `;
 
@@ -21,7 +31,6 @@ const StyledProject = styled.li`
   grid-gap: 10px;
   grid-template-columns: repeat(9, 1fr);
   align-items: center;
-  padding: 0 2% 0;
   //top RL bottom
 
   &:not(:last-of-type) {
@@ -32,7 +41,7 @@ const StyledProject = styled.li`
     }
 
     @media (max-width: 480px) {
-      margin-bottom: 30px;
+      margin-bottom: 10px;
     }
   }
 
@@ -52,7 +61,7 @@ const StyledProject = styled.li`
         text-align: left;
       }
       @media (max-width: 480px) {
-        padding: 25px 25px 20px;
+        grid-column: 1/-3;
       }
     }
     .project-tech-list {
@@ -77,6 +86,10 @@ const StyledProject = styled.li`
       @media (max-width: 768px) {
         grid-column: 3 / -1;
       }
+
+      @media (max-width: 480px) {
+        grid-column: 1 / -1;
+      }
     }
   }
 
@@ -89,7 +102,6 @@ const StyledProject = styled.li`
     @media (max-width: 1080px) {
       grid-column: 1 / 9;
     }
-
     @media (max-width: 768px) {
       display: flex;
       flex-direction: column;
@@ -236,6 +248,10 @@ const StyledProject = styled.li`
       grid-column: 1 / -3;
       opacity: 0.25;
     }
+    @media (max-width: 480px) {
+      grid-column: 1 / -1;
+      opacity: 0.25;
+    }
 
     a {
       width: 100%;
@@ -318,9 +334,11 @@ const Featured = () => {
   const featuredProjects = data.featured.edges.filter(({ node }) => node);
 
   const revealTitle = useRef(null);
+  const revealArchiveLink = useRef(null);
   const revealProjects = useRef([]);
   useEffect(() => {
     sr.reveal(revealTitle.current, srConfig());
+    sr.reveal(revealArchiveLink.current, srConfig());
     revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
   }, []);
 
@@ -331,6 +349,9 @@ const Featured = () => {
       </h2>
 
       <StyledProjectsGrid>
+        <Link className="archive-link" to="/archive" ref={revealArchiveLink}>
+          view project archive
+        </Link>
         {featuredProjects &&
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;

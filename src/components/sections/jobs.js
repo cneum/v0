@@ -8,7 +8,7 @@ import sr from '@utils/sr';
 
 const StyledJobsSection = styled.section`
   max-width: 870px;
-  padding-bottom: 35px;
+  padding-bottom: 45px;
   .inner {
     display: flex;
 
@@ -21,15 +21,15 @@ const StyledJobsSection = styled.section`
 const StyledTabList = styled.div`
   position: relative;
   z-index: 3;
-  width: max-content;
+  width: 38vw;
   padding: 0;
-  margin: 0;
+  margin: 0 0 0 4%;
   list-style: none;
 
   @media (max-width: 600px) {
     display: flex;
     overflow-x: auto;
-    width: calc(100% + 100px);
+    width: calc(100% + 90px);
     margin-left: -50px;
     margin-bottom: 30px;
   }
@@ -41,18 +41,18 @@ const StyledTabList = styled.div`
   li {
     &:first-of-type {
       @media (max-width: 600px) {
-        margin-left: 50px;
+        margin-left: 0px;
       }
       @media (max-width: 480px) {
-        margin-left: 25px;
+        margin-left: 0px;
       }
     }
     &:last-of-type {
       @media (max-width: 600px) {
-        padding-right: 50px;
+        padding-right: 0px;
       }
       @media (max-width: 480px) {
-        padding-right: 25px;
+        padding-right: 0px;
       }
     }
   }
@@ -63,30 +63,37 @@ const StyledTabButton = styled.button`
   display: flex;
   align-items: center;
   width: 100%;
-  height: var(--tab-height);
-  padding: 0 20px 2px;
+  height: 50px;
   border-left: 2px solid black;
   background-color: transparent;
   color: ${({ isActive }) => (isActive ? 'var(--red)' : 'black')};
   font-family: var(--font-sans);
   text-transform: uppercase;
-  font-size: var(--fz-xxs);
+  font-size: 10px;
   font-weight: ${({ isActive }) => (isActive ? '500' : '100')};
   text-align: left;
-  white-space: nowrap;
+  white-space: normal;
 
-  @media (max-width: 768px) {
-    padding: 0 15px 2px;
+  @media (min-width: 601px) {
+    padding: 0 20px 2px;
   }
   @media (max-width: 600px) {
     ${({ theme }) => theme.mixins.flexCenter};
     min-width: 120px;
-    padding: 0 15px;
+    padding: 0 7px 2px;
     border-left: 0;
     border-bottom: 2px solid var(--lightest-navy);
     text-align: center;
   }
-
+  @media (max-width: 480px) {
+    ${({ theme }) => theme.mixins.flexCenter};
+    min-width: 20vw;
+    padding: 0 2px 2px;
+    border-left: 0;
+    border-bottom: 2px solid var(--lightest-navy);
+    text-align: center;
+    font-size: 9px;
+  }
   &:hover,
   &:focus {
     background-color: white;
@@ -99,30 +106,33 @@ const StyledHighlight = styled.div`
   left: 0;
   z-index: 10;
   width: 2px;
-  height: var(--tab-height);
+  height: 50px;
   border-radius: var(--border-radius);
   background: var(--red);
-  transform: translateY(calc(${({ activeTabId }) => activeTabId} * var(--tab-height)));
+  transform: translateY(calc(${({ activeTabId }) => activeTabId} * 50px));
   transition: transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
   transition-delay: 0.1s;
 
+  }
   @media (max-width: 600px) {
     top: auto;
     bottom: 0;
-    width: 100%;
-    max-width: var(--tab-width);
+    width: 25.4vw;
     height: 2px;
-    margin-left: 50px;
-    transform: translateX(calc(${({ activeTabId }) => activeTabId} * var(--tab-width)));
+    transform: translateX(calc(25vw));
+    margin-left:3px;
   }
   @media (max-width: 480px) {
-    margin-left: 25px;
+    top: auto;
+    bottom: 0;
+    width: 25.8vw;
+    height: 2px;
+    transform: translateX(calc(25vw));
+   
   }
 `;
 
 const StyledTabPanels = styled.div`
-  margin-left: 20px;
-
   @media (max-width: 600px) {
     margin-left: 0;
   }
