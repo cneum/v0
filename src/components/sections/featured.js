@@ -19,8 +19,10 @@ const StyledProject = styled.li`
   position: relative;
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(9, 1fr);
   align-items: center;
+  padding: 0 2% 0;
+  //top RL bottom
 
   &:not(:last-of-type) {
     margin-bottom: 50px;
@@ -36,11 +38,13 @@ const StyledProject = styled.li`
 
   &:nth-of-type(odd) {
     .project-content {
-      grid-column: 7 / -1;
+      grid-column: 4 / -1;
+      //grid-column-start: 4;
+      //grid-column-end: -1;
       text-align: right;
 
       @media (max-width: 1080px) {
-        grid-column: 5 / -1;
+        grid-column: 4 / -1;
       }
       @media (max-width: 768px) {
         grid-column: 1 / -1;
@@ -80,7 +84,8 @@ const StyledProject = styled.li`
     position: relative;
     grid-column: 1 / 7;
     grid-row: 1 / -1;
-
+    //grid-row-start: 1;
+    //grid-row-end: -1;
     @media (max-width: 1080px) {
       grid-column: 1 / 9;
     }
