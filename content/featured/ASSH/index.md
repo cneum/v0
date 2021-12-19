@@ -1,7 +1,7 @@
 ---
 date: '2020-10-02'
 title: 'ASSH Conference Podium Presentation'
-cover: './vdaypost.png'
+cover: './VAM20p21.png'
 external: 'https://www.assh.org/annualmeeting/'
 tech:
   - research
