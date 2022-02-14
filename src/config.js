@@ -1,26 +1,23 @@
 module.exports = {
-  email: 'brittany.chiang@gmail.com',
+  email: 'hello@celinenicolas.com',
 
   socialMedia: [
     {
-      name: 'GitHub',
-      url: 'https://github.com/bchiang7',
+      name: 'Linkedin',
+      url: 'https://www.linkedin.com/in/celinenicolas/',
     },
     {
-      name: 'Instagram',
-      url: 'https://www.instagram.com/bchiang7',
+      name: 'ResearchGate',
+      url: 'https://www.researchgate.net/profile/Celine-Nicolas-2',
+      cover: './researchgate.svg',
     },
     {
       name: 'Twitter',
-      url: 'https://twitter.com/bchiang7',
+      url: 'https://twitter.com/celinefelisa',
     },
     {
-      name: 'Linkedin',
-      url: 'https://www.linkedin.com/in/bchiang7',
-    },
-    {
-      name: 'Codepen',
-      url: 'https://codepen.io/bchiang7',
+      name: 'Instagram',
+      url: 'https://www.instagram.com/__cenic',
     },
   ],
 
@@ -34,8 +31,12 @@ module.exports = {
       url: '/#jobs',
     },
     {
-      name: 'Work',
+      name: 'Works',
       url: '/#projects',
+    },
+    {
+      name: 'Blog',
+      url: '/#blog',
     },
     {
       name: 'Contact',

@@ -1,18 +1,27 @@
 import React, { useEffect, useRef } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { Link, useStaticQuery, graphql } from 'gatsby';
+import Img from 'gatsby-image';
 import styled from 'styled-components';
 import sr from '@utils/sr';
 import { srConfig } from '@config';
 import { Icon } from '@components/icons';
-import { usePrefersReducedMotion } from '@hooks';
 
 const StyledProjectsGrid = styled.ul`
   ${({ theme }) => theme.mixins.resetList};
-
+  text-align: center;
   a {
     position: relative;
-    z-index: 1;
+    z-index: 2;
+  }
+  .archive-link {
+    ${({ theme }) => theme.mixins.button};
+    font-size: var(--fz-sm);
+    padding: 4px 2px;
+    margin: 5px 0 10px;
+    color: var(--dred);
+    &:after {
+      bottom: 0;
+    }
   }
 `;
 
@@ -20,54 +29,49 @@ const StyledProject = styled.li`
   position: relative;
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(9, 1fr);
   align-items: center;
-
-  @media (max-width: 768px) {
-    ${({ theme }) => theme.mixins.boxShadow};
-  }
+  //top RL bottom
 
   &:not(:last-of-type) {
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 
     @media (max-width: 768px) {
       margin-bottom: 70px;
     }
 
     @media (max-width: 480px) {
-      margin-bottom: 30px;
+      margin-bottom: 10px;
     }
   }
 
   &:nth-of-type(odd) {
     .project-content {
-      grid-column: 7 / -1;
+      grid-column: 4 / -1;
+      //grid-column-start: 4;
+      //grid-column-end: -1;
       text-align: right;
 
       @media (max-width: 1080px) {
-        grid-column: 5 / -1;
+        grid-column: 4 / -1;
       }
       @media (max-width: 768px) {
         grid-column: 1 / -1;
-        padding: 40px 40px 30px;
+        padding: 0px 0px 0px;
         text-align: left;
       }
       @media (max-width: 480px) {
-        padding: 25px 25px 20px;
+        grid-column: 1/-3;
       }
     }
     .project-tech-list {
       justify-content: flex-end;
 
-      @media (max-width: 768px) {
-        justify-content: flex-start;
-      }
-
       li {
         margin: 0 0 5px 20px;
 
         @media (max-width: 768px) {
-          margin: 0 10px 5px 0;
+          margin: 0 0 5px 10px;
         }
       }
     }
@@ -75,17 +79,15 @@ const StyledProject = styled.li`
       justify-content: flex-end;
       margin-left: 0;
       margin-right: -10px;
-
-      @media (max-width: 768px) {
-        justify-content: flex-start;
-        margin-left: -10px;
-        margin-right: 0;
-      }
     }
     .project-image {
-      grid-column: 1 / 8;
+      grid-column: 1 / -6;
 
       @media (max-width: 768px) {
+        grid-column: 3 / -1;
+      }
+
+      @media (max-width: 480px) {
         grid-column: 1 / -1;
       }
     }
@@ -95,18 +97,18 @@ const StyledProject = styled.li`
     position: relative;
     grid-column: 1 / 7;
     grid-row: 1 / -1;
-
+    //grid-row-start: 1;
+    //grid-row-end: -1;
     @media (max-width: 1080px) {
       grid-column: 1 / 9;
     }
-
     @media (max-width: 768px) {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      text-align: right;
       height: 100%;
       grid-column: 1 / -1;
-      padding: 40px 40px 30px;
+      padding: 0px 0px 0px;
       z-index: 5;
     }
 
@@ -117,14 +119,13 @@ const StyledProject = styled.li`
 
   .project-overline {
     margin: 10px 0;
-    color: var(--green);
-    font-family: var(--font-mono);
+    color: var(--red);
     font-size: var(--fz-xs);
     font-weight: 400;
   }
 
   .project-title {
-    color: var(--lightest-slate);
+    color: black;
     font-size: clamp(24px, 5vw, 28px);
 
     @media (min-width: 768px) {
@@ -155,11 +156,12 @@ const StyledProject = styled.li`
     ${({ theme }) => theme.mixins.boxShadow};
     position: relative;
     z-index: 2;
-    padding: 25px;
-    border-radius: var(--border-radius);
-    background-color: var(--light-navy);
-    color: var(--light-slate);
-    font-size: var(--fz-lg);
+    padding: 12px;
+    border-radius: none;
+    background-color: var(--white);
+    color: black;
+    font-size: 11px;
+    overflow: auto;
 
     @media (max-width: 768px) {
       padding: 20px 0;
@@ -170,14 +172,14 @@ const StyledProject = styled.li`
         box-shadow: none;
       }
     }
-
+    p {
+      font-weight: 100;
+      @media (max-width: 768px) {
+        font-weight: 300;
+      }
+    }
     a {
       ${({ theme }) => theme.mixins.inlineLink};
-    }
-
-    strong {
-      color: var(--white);
-      font-weight: normal;
     }
   }
 
@@ -186,15 +188,16 @@ const StyledProject = styled.li`
     flex-wrap: wrap;
     position: relative;
     z-index: 2;
-    margin: 25px 0 10px;
+    margin: 15px 0 10px;
     padding: 0;
     list-style: none;
 
     li {
       margin: 0 20px 5px 0;
-      color: var(--light-slate);
-      font-family: var(--font-mono);
-      font-size: var(--fz-xs);
+      color: gray;
+      font-style: oblique;
+      font-size: var(--fz-xxx);
+      line-height: 1.75;
       white-space: nowrap;
     }
 
@@ -203,7 +206,7 @@ const StyledProject = styled.li`
 
       li {
         margin: 0 10px 5px 0;
-        color: var(--lightest-slate);
+        color: white;
       }
     }
   }
@@ -214,29 +217,23 @@ const StyledProject = styled.li`
     position: relative;
     margin-top: 10px;
     margin-left: -10px;
-    color: var(--lightest-slate);
+    color: black;
 
     a {
       ${({ theme }) => theme.mixins.flexCenter};
-      padding: 10px;
+      padding: 0 10px 0;
 
       &.external {
         svg {
-          width: 22px;
-          height: 22px;
-          margin-top: -4px;
+          width: 15px;
+          height: 15px;
+          margin-top: 0px;
         }
       }
 
       svg {
-        width: 20px;
-        height: 20px;
+        color: var(--dark-greige);
       }
-    }
-
-    .cta {
-      ${({ theme }) => theme.mixins.smallButton};
-      margin: 10px;
     }
   }
 
@@ -248,24 +245,21 @@ const StyledProject = styled.li`
     z-index: 1;
 
     @media (max-width: 768px) {
+      grid-column: 1 / -3;
+      opacity: 0.25;
+    }
+    @media (max-width: 480px) {
       grid-column: 1 / -1;
-      height: 100%;
       opacity: 0.25;
     }
 
     a {
       width: 100%;
-      height: 100%;
-      background-color: var(--green);
+      background-color: none;
       border-radius: var(--border-radius);
       vertical-align: middle;
 
-      &:hover,
-      &:focus {
-        background: transparent;
-        outline: 0;
-
-        &:before,
+      &:hover {
         .img {
           background: transparent;
           filter: none;
@@ -283,21 +277,26 @@ const StyledProject = styled.li`
         bottom: 0;
         z-index: 3;
         transition: var(--transition);
-        background-color: var(--navy);
-        mix-blend-mode: screen;
+        background-color: none;
+        mix-blend-mode: none;
+      }
+      .img {
+        background: transparent;
+        filter: opacity(0.5) drop-shadow(0 0 0 var(--greige));
       }
     }
 
     .img {
-      border-radius: var(--border-radius);
-      mix-blend-mode: multiply;
-      filter: grayscale(100%) contrast(1) brightness(90%);
+      filter: grayscale(100%);
+      &:hover {
+        filter: none;
+      }
 
       @media (max-width: 768px) {
         object-fit: cover;
         width: auto;
         height: 100%;
-        filter: grayscale(100%) contrast(1) brightness(50%);
+        filter: grayscale(100%) contrast(1) brightness(80%);
       }
     }
   }
@@ -305,10 +304,10 @@ const StyledProject = styled.li`
 
 const Featured = () => {
   const data = useStaticQuery(graphql`
-    {
+    query {
       featured: allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/featured/" } }
-        sort: { fields: [frontmatter___date], order: ASC }
+        sort: { fields: [frontmatter___date], order: DESC }
       ) {
         edges {
           node {
@@ -316,13 +315,14 @@ const Featured = () => {
               title
               cover {
                 childImageSharp {
-                  gatsbyImageData(width: 700, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+                  fluid(maxWidth: 700, traceSVG: { color: "#64ffda" }) {
+                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                  }
                 }
               }
               tech
               github
               external
-              cta
             }
             html
           }
@@ -332,37 +332,36 @@ const Featured = () => {
   `);
 
   const featuredProjects = data.featured.edges.filter(({ node }) => node);
+
   const revealTitle = useRef(null);
+  const revealArchiveLink = useRef(null);
   const revealProjects = useRef([]);
-  const prefersReducedMotion = usePrefersReducedMotion();
-
   useEffect(() => {
-    if (prefersReducedMotion) {
-      return;
-    }
-
     sr.reveal(revealTitle.current, srConfig());
+    sr.reveal(revealArchiveLink.current, srConfig());
     revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
   }, []);
 
   return (
     <section id="projects">
       <h2 className="numbered-heading" ref={revealTitle}>
-        Some Things I’ve Built
+        Some Things I’ve Created
       </h2>
 
       <StyledProjectsGrid>
+        <Link className="archive-link" to="/archive" ref={revealArchiveLink}>
+          view project archive
+        </Link>
         {featuredProjects &&
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
-            const { external, title, tech, github, cover, cta } = frontmatter;
-            const image = getImage(cover);
+            const { external, title, tech, github, cover } = frontmatter;
 
             return (
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
                 <div className="project-content">
                   <div>
-                    <p className="project-overline">Featured Project</p>
+                    <p className="project-overline">Featured Work</p>
 
                     <h3 className="project-title">
                       <a href={external}>{title}</a>
@@ -382,17 +381,12 @@ const Featured = () => {
                     )}
 
                     <div className="project-links">
-                      {cta && (
-                        <a href={cta} aria-label="Course Link" className="cta">
-                          Learn More
-                        </a>
-                      )}
                       {github && (
                         <a href={github} aria-label="GitHub Link">
                           <Icon name="GitHub" />
                         </a>
                       )}
-                      {external && !cta && (
+                      {external && (
                         <a href={external} aria-label="External Link" className="external">
                           <Icon name="External" />
                         </a>
@@ -403,7 +397,7 @@ const Featured = () => {
 
                 <div className="project-image">
                   <a href={external ? external : github ? github : '#'}>
-                    <GatsbyImage image={image} alt={title} className="img" />
+                    <Img fluid={cover.childImageSharp.fluid} alt={title} className="img" />
                   </a>
                 </div>
               </StyledProject>

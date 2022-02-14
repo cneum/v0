@@ -25,13 +25,8 @@ const Head = ({ title, description, image }) => {
     `,
   );
 
-  const {
-    defaultTitle,
-    defaultDescription,
-    siteUrl,
-    defaultImage,
-    twitterUsername,
-  } = site.siteMetadata;
+  const { defaultTitle, defaultDescription, siteUrl, defaultImage, twitterUsername } =
+    site.siteMetadata;
 
   const seo = {
     title: title || defaultTitle,
@@ -73,7 +68,7 @@ Head.propTypes = {
 };
 
 Head.defaultProps = {
-  title: null,
+  title: 'Under Construction',
   description: null,
   image: null,
 };

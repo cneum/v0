@@ -1,22 +1,24 @@
 import { css } from 'styled-components';
 
 const button = css`
-  color: var(--green);
-  background-color: transparent;
-  border: 1px solid var(--green);
+  color: var(--black);
+  background-color: var(--dark-greige);
+  font-style: italic;
   border-radius: var(--border-radius);
-  font-size: var(--fz-xs);
-  font-family: var(--font-mono);
+  font-size: var(--fz-sm);
+  font-family: var(--font-sans);
+  font-weight: 200;
   line-height: 1;
   text-decoration: none;
   cursor: pointer;
   transition: var(--transition);
-  padding: 1.25rem 1.75rem;
 
-  &:hover,
+  &:hover {
+    border: 1px solid var(--black);
+  }
   &:focus,
   &:active {
-    background-color: var(--green-tint);
+    background-color: var(--red);
     outline: none;
   }
   &:after {
@@ -44,10 +46,11 @@ const mixins = {
     color: inherit;
     position: relative;
     transition: var(--transition);
+    cursor: pointer;
     &:hover,
     &:active,
     &:focus {
-      color: var(--green);
+      color: black);
       outline: 0;
     }
   `,
@@ -58,17 +61,18 @@ const mixins = {
     text-decoration-skip-ink: auto;
     position: relative;
     transition: var(--transition);
-    color: var(--green);
+    cursor: pointer;
+    color: inherit;
     &:hover,
     &:focus,
     &:active {
-      color: var(--green);
+      color: black;
       outline: 0;
       &:after {
         width: 100%;
       }
       & > * {
-        color: var(--green) !important;
+        color: black !important;
         transition: var(--transition);
       }
     }
@@ -79,7 +83,7 @@ const mixins = {
       height: 1px;
       position: relative;
       bottom: 0.37em;
-      background-color: var(--green);
+      background-color: black;
       transition: var(--transition);
       opacity: 0.5;
     }
@@ -88,22 +92,26 @@ const mixins = {
   button,
 
   smallButton: css`
-    color: var(--green);
+    color: black;
     background-color: transparent;
-    border: 1px solid var(--green);
-    border-radius: var(--border-radius);
-    padding: 0.75rem 1rem;
-    font-size: var(--fz-xs);
-    font-family: var(--font-mono);
+    padding: 0.3rem 0.5rem;
+    font-size: 19px;
+    font-family: var(--font-sans);
     line-height: 1;
+    font-weight: 300;
     text-decoration: none;
     cursor: pointer;
     transition: var(--transition);
-    &:hover,
-    &:focus,
+    &:hover {
+      color: black;
+      border: 1px solid black;
+      background-color: var(--red);
+    }
+    &:focus {
+      color: black;
+      border: 1px solid black;
+    }
     &:active {
-      background-color: var(--green-tint);
-      outline: none;
     }
     &:after {
       display: none !important;
@@ -111,22 +119,22 @@ const mixins = {
   `,
 
   bigButton: css`
-    color: var(--green);
-    background-color: transparent;
-    border: 1px solid var(--green);
-    border-radius: var(--border-radius);
-    padding: 1.25rem 1.75rem;
-    font-size: var(--fz-sm);
-    font-family: var(--font-mono);
+    color: var(--black);
+    padding: 0.3rem 0.3rem;
+    font-family: var(--font-sans);
+    font-weight: 300;
     line-height: 1;
     text-decoration: none;
+    text-transform: uppercase;
     cursor: pointer;
     transition: var(--transition);
-    &:hover,
+    &:hover {
+      color: black;
+      border: 1px solid black;
+      background-color: var(--red);
+    }
     &:focus,
     &:active {
-      background-color: var(--green-tint);
-      outline: none;
     }
     &:after {
       display: none !important;
@@ -147,16 +155,22 @@ const mixins = {
     padding: 0;
     margin: 0;
     list-style: none;
-    font-size: var(--fz-lg);
+    font-size: var(--fz-xs);
     li {
       position: relative;
-      padding-left: 30px;
-      margin-bottom: 10px;
+      padding-left: 25px;
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: var(--fz-sm);
+      font-weight: 100;
+      line-height: 1.7;
       &:before {
-        content: '▹';
+        content: '▸';
         position: absolute;
+        font-size: 24px;
         left: 0;
-        color: var(--green);
+        color: var(--red);
+        line-height: 0.9;
       }
     }
   `,

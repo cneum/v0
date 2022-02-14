@@ -8,8 +8,8 @@ const StyledFooter = styled.footer`
   ${({ theme }) => theme.mixins.flexCenter};
   flex-direction: column;
   height: auto;
-  min-height: 70px;
-  padding: 15px;
+  min-height: 30px;
+  padding: 5px;
   text-align: center;
 `;
 
@@ -21,7 +21,6 @@ const StyledSocialLinks = styled.div`
     width: 100%;
     max-width: 270px;
     margin: 0 auto 10px;
-    color: var(--light-slate);
   }
 
   ul {
@@ -41,10 +40,10 @@ const StyledSocialLinks = styled.div`
 `;
 
 const StyledCredit = styled.div`
-  color: var(--light-slate);
-  font-family: var(--font-mono);
-  font-size: var(--fz-xxs);
-  line-height: 1;
+  color: var(--dark-greige);
+  font-family: var(--font-sans);
+  font-size: var(--fz-xxx);
+  font-style: italic;
 
   a {
     padding: 10px;
@@ -52,6 +51,7 @@ const StyledCredit = styled.div`
 
   .github-stats {
     margin-top: 10px;
+    color: var(--greige);
 
     & > span {
       display: inline-flex;
@@ -106,16 +106,14 @@ const Footer = () => {
 
       <StyledCredit tabindex="-1">
         <a href="https://github.com/bchiang7/v4">
-          <div>Designed &amp; Built by Brittany Chiang</div>
+          <div>Adapted from @bchang Gatsby.js framework ©2021 </div>
 
           {githubInfo.stars && githubInfo.forks && (
             <div className="github-stats">
               <span>
-                <Icon name="Star" />
                 <span>{githubInfo.stars.toLocaleString()}</span>
               </span>
               <span>
-                <Icon name="Fork" />
                 <span>{githubInfo.forks.toLocaleString()}</span>
               </span>
             </div>

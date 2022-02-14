@@ -3,45 +3,60 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
 import { navDelay, loaderDelay } from '@utils';
 import { usePrefersReducedMotion } from '@hooks';
-// import { email } from '@config';
-
 const StyledHeroSection = styled.section`
   ${({ theme }) => theme.mixins.flexCenter};
   flex-direction: column;
   align-items: flex-start;
   min-height: 100vh;
-  padding: 0;
-
-  @media (max-width: 480px) and (min-height: 700px) {
-    padding-bottom: 10vh;
-  }
-
+  padding-left: 2%;
+  padding-right: 2%;
   h1 {
-    margin: 0 0 30px 4px;
-    color: var(--green);
-    font-family: var(--font-mono);
-    font-size: clamp(var(--fz-sm), 5vw, var(--fz-md));
+    margin: 0 0 6px 0px;
+    color: var(--black);
+    font-family: var(--font-serif);
+    font-size: clamp(var(--fz-xl), 7vw, var(--fz-xxl));
     font-weight: 400;
 
     @media (max-width: 480px) {
       margin: 0 0 20px 2px;
     }
   }
+  h2 {
+  }
 
   h3 {
-    margin-top: 10px;
-    color: var(--slate);
-    line-height: 0.9;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    color: black;
+    letter-spacing: -2px;
+    font-family: var(--font-serif);
+    font-weight: 300;
+    line-height: 0.85;
   }
 
   p {
-    margin: 20px 0 0;
-    max-width: 540px;
+    margin: 0px 8px 0;
+    max-width: 460px;
+    font-size: 14px;
+    text-transform: uppercase;
+    word-spacing: 1px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+  }
+  .notice {
+    font-size: 10px;
+    color: #b3a58b;
+    text-indent: 110px;
   }
 
-  .email-link {
+  .hero-link {
     ${({ theme }) => theme.mixins.bigButton};
-    margin-top: 50px;
+    background: var(--red);
+    margin-top: 20px;
+    color: var(--greige);
+    font-weight: 500;
+    border: 1px solid var(--red);
+    font-size: 22px;
   }
 `;
 
@@ -53,38 +68,25 @@ const Hero = () => {
     if (prefersReducedMotion) {
       return;
     }
-
     const timeout = setTimeout(() => setIsMounted(true), navDelay);
     return () => clearTimeout(timeout);
   }, []);
 
   const one = <h1>Hi, my name is</h1>;
-  const two = <h2 className="big-heading">Brittany Chiang.</h2>;
-  const three = <h3 className="big-heading">I build things for the web.</h3>;
-  const four = (
-    <>
-      <p>
-        I’m a software engineer specializing in building (and occasionally designing) exceptional
-        digital experiences. Currently, I’m focused on building accessible, human-centered products
-        at{' '}
-        <a href="https://upstatement.com/" target="_blank" rel="noreferrer">
-          Upstatement
-        </a>
-        .
-      </p>
-    </>
-  );
+  const two = <h2 className="big-heading">Celine</h2>;
+  const three = <p>Engineer / Scientist / Artist</p>;
+  const four = <h3 className="medium-heading">I like to create solutions that empower others.</h3>;
   const five = (
-    <a
-      className="email-link"
-      href="https://www.newline.co/courses/build-a-spotify-connected-app"
-      target="_blank"
-      rel="noreferrer">
-      Check out my course!
+    <a href="https://www.celinenicolas.com/" className="hero-link">
+      ASK ME ANYTHING&nbsp;→
     </a>
   );
-
-  const items = [one, two, three, four, five];
+  const six = (
+    <p className="notice">
+      <sup></sup>
+    </p>
+  );
+  const items = [one, two, three, four, five, six];
 
   return (
     <StyledHeroSection>

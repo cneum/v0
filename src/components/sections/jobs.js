@@ -5,21 +5,15 @@ import styled from 'styled-components';
 import { srConfig } from '@config';
 import { KEY_CODES } from '@utils';
 import sr from '@utils/sr';
-import { usePrefersReducedMotion } from '@hooks';
 
 const StyledJobsSection = styled.section`
-  max-width: 700px;
-
+  max-width: 870px;
+  padding-bottom: 45px;
   .inner {
     display: flex;
 
     @media (max-width: 600px) {
       display: block;
-    }
-
-    // Prevent container from jumping
-    @media (min-width: 700px) {
-      min-height: 340px;
     }
   }
 `;
@@ -27,40 +21,38 @@ const StyledJobsSection = styled.section`
 const StyledTabList = styled.div`
   position: relative;
   z-index: 3;
-  width: max-content;
+  width: 38vw;
   padding: 0;
-  margin: 0;
+  margin: 0 0 0 4%;
   list-style: none;
 
   @media (max-width: 600px) {
     display: flex;
     overflow-x: auto;
-    width: calc(100% + 100px);
-    padding-left: 50px;
+    width: calc(100% + 90px);
     margin-left: -50px;
     margin-bottom: 30px;
   }
   @media (max-width: 480px) {
     width: calc(100% + 50px);
-    padding-left: 25px;
     margin-left: -25px;
   }
 
   li {
     &:first-of-type {
       @media (max-width: 600px) {
-        margin-left: 50px;
+        margin-left: 0px;
       }
       @media (max-width: 480px) {
-        margin-left: 25px;
+        margin-left: 0px;
       }
     }
     &:last-of-type {
       @media (max-width: 600px) {
-        padding-right: 50px;
+        padding-right: 0px;
       }
       @media (max-width: 480px) {
-        padding-right: 25px;
+        padding-right: 0px;
       }
     }
   }
@@ -71,31 +63,40 @@ const StyledTabButton = styled.button`
   display: flex;
   align-items: center;
   width: 100%;
-  height: var(--tab-height);
-  padding: 0 20px 2px;
-  border-left: 2px solid var(--lightest-navy);
+  height: 50px;
+  border-left: 2px solid black;
   background-color: transparent;
-  color: ${({ isActive }) => (isActive ? 'var(--green)' : 'var(--slate)')};
-  font-family: var(--font-mono);
-  font-size: var(--fz-xs);
+  color: ${({ isActive }) => (isActive ? 'var(--red)' : 'black')};
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: ${({ isActive }) => (isActive ? '500' : '100')};
   text-align: left;
-  white-space: nowrap;
+  white-space: normal;
 
-  @media (max-width: 768px) {
-    padding: 0 15px 2px;
+  @media (min-width: 601px) {
+    padding: 0 20px 2px;
   }
   @media (max-width: 600px) {
     ${({ theme }) => theme.mixins.flexCenter};
     min-width: 120px;
-    padding: 0 15px;
+    padding: 0 7px 2px;
     border-left: 0;
     border-bottom: 2px solid var(--lightest-navy);
     text-align: center;
   }
-
+  @media (max-width: 480px) {
+    ${({ theme }) => theme.mixins.flexCenter};
+    min-width: 20vw;
+    padding: 0 2px 2px;
+    border-left: 0;
+    border-bottom: 2px solid var(--lightest-navy);
+    text-align: center;
+    font-size: 9px;
+  }
   &:hover,
   &:focus {
-    background-color: var(--light-navy);
+    background-color: white;
   }
 `;
 
@@ -105,32 +106,33 @@ const StyledHighlight = styled.div`
   left: 0;
   z-index: 10;
   width: 2px;
-  height: var(--tab-height);
+  height: 50px;
   border-radius: var(--border-radius);
-  background: var(--green);
-  transform: translateY(calc(${({ activeTabId }) => activeTabId} * var(--tab-height)));
+  background: var(--red);
+  transform: translateY(calc(${({ activeTabId }) => activeTabId} * 50px));
   transition: transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
   transition-delay: 0.1s;
 
+  }
   @media (max-width: 600px) {
     top: auto;
     bottom: 0;
-    width: 100%;
-    max-width: var(--tab-width);
+    width: 25.4vw;
     height: 2px;
-    margin-left: 50px;
-    transform: translateX(calc(${({ activeTabId }) => activeTabId} * var(--tab-width)));
+    transform: translateX(calc(25vw));
+    margin-left:3px;
   }
   @media (max-width: 480px) {
-    margin-left: 25px;
+    top: auto;
+    bottom: 0;
+    width: 25.8vw;
+    height: 2px;
+    transform: translateX(calc(25vw));
+   
   }
 `;
 
 const StyledTabPanels = styled.div`
-  position: relative;
-  width: 100%;
-  margin-left: 20px;
-
   @media (max-width: 600px) {
     margin-left: 0;
   }
@@ -140,26 +142,30 @@ const StyledTabPanel = styled.div`
   width: 100%;
   height: auto;
   padding: 10px 5px;
+  font-family: var(--font-sans);
 
   ul {
     ${({ theme }) => theme.mixins.fancyList};
   }
 
   h3 {
-    margin-bottom: 2px;
-    font-size: var(--fz-xxl);
-    font-weight: 500;
-    line-height: 1.3;
-
+    margin: 0;
+    font-size: var(--fz-lg);
+    font-weight: 300;
     .company {
-      color: var(--green);
+      color: black;
     }
   }
-
+  a {
+    font-weight: 600;
+    color: gray;
+    font-size: var(--fz-md);
+    margin: 5px 0 0;
+  }
   .range {
-    margin-bottom: 25px;
-    color: var(--light-slate);
-    font-family: var(--font-mono);
+    margin-bottom: 15px;
+    color: white;
+    font-family: inherit;
     font-size: var(--fz-xs);
   }
 `;
@@ -192,16 +198,9 @@ const Jobs = () => {
   const [activeTabId, setActiveTabId] = useState(0);
   const [tabFocus, setTabFocus] = useState(null);
   const tabs = useRef([]);
+
   const revealContainer = useRef(null);
-  const prefersReducedMotion = usePrefersReducedMotion();
-
-  useEffect(() => {
-    if (prefersReducedMotion) {
-      return;
-    }
-
-    sr.reveal(revealContainer.current, srConfig());
-  }, []);
+  useEffect(() => sr.reveal(revealContainer.current, srConfig()), []);
 
   const focusTab = () => {
     if (tabs.current[tabFocus]) {
@@ -261,7 +260,8 @@ const Jobs = () => {
                   role="tab"
                   tabIndex={activeTabId === i ? '0' : '-1'}
                   aria-selected={activeTabId === i ? true : false}
-                  aria-controls={`panel-${i}`}>
+                  aria-controls={`panel-${i}`}
+                >
                   <span>{company}</span>
                 </StyledTabButton>
               );
@@ -283,14 +283,17 @@ const Jobs = () => {
                     tabIndex={activeTabId === i ? '0' : '-1'}
                     aria-labelledby={`tab-${i}`}
                     aria-hidden={activeTabId !== i}
-                    hidden={activeTabId !== i}>
+                    hidden={activeTabId !== i}
+                  >
                     <h3>
                       <span>{title}</span>
                       <span className="company">
-                        &nbsp;@&nbsp;
-                        <a href={url} className="inline-link">
-                          {company}
-                        </a>
+                        &nbsp;
+                        <p>
+                          <a href={url} className="inline-link">
+                            {company}
+                          </a>
+                        </p>
                       </span>
                     </h3>
 

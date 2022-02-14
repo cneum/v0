@@ -1,13 +1,13 @@
 import React, { useEffect, useRef } from 'react';
-import { StaticImage } from 'gatsby-plugin-image';
+import { useStaticQuery, graphql } from 'gatsby';
+import Img from 'gatsby-image';
 import styled from 'styled-components';
 import { srConfig } from '@config';
 import sr from '@utils/sr';
-import { usePrefersReducedMotion } from '@hooks';
 
 const StyledAboutSection = styled.section`
   max-width: 900px;
-
+  padding-bottom: 45px;
   .inner {
     display: grid;
     grid-template-columns: 3fr 2fr;
@@ -19,40 +19,66 @@ const StyledAboutSection = styled.section`
   }
 `;
 const StyledText = styled.div`
+  @media (max-width: 768px) {
+    position: absolute;
+  }
   ul.skills-list {
     display: grid;
-    grid-template-columns: repeat(2, minmax(140px, 200px));
-    grid-gap: 0 10px;
+    @media (min-width: 769px) {
+      grid-template-columns: repeat(2, minmax(140px, 200px));
+    }
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(3, minmax(32vw, 50vw));
+    }
     padding: 0;
-    margin: 20px 0 0 0;
+    margin: 0px 0 0 0;
     overflow: hidden;
     list-style: none;
+    line-height: 1;
 
     li {
       position: relative;
       margin-bottom: 10px;
-      padding-left: 20px;
-      font-family: var(--font-mono);
+      padding-left: 15px;
+      margin-bottom: 3vh;
+      @media (max-width: 768px) {
+        margin-bottom: 5px;
+      }
+      font-family: var(--font-serif);
       font-size: var(--fz-xs);
+      font-style: italic;
+      color: white;
 
       &:before {
-        content: '▹';
+        content: '▸';
         position: absolute;
         left: 0;
-        color: var(--green);
-        font-size: var(--fz-sm);
-        line-height: 12px;
+        color: var(--red);
+        font-size: 24px;
+        line-height: 0.5;
+        font-style: normal;
       }
     }
+  }
+  p {
+    font-size: 10.5px;
+    letter-spacing: 0px;
+    line-height: 0.95;
+    margin-bottom: 2px;
   }
 `;
 const StyledPic = styled.div`
   position: relative;
   max-width: 300px;
-
   @media (max-width: 768px) {
-    margin: 50px auto 0;
-    width: 70%;
+    max-width: 500px;
+    width: 50vw;
+    opacity: 30%;
+    margin-left: 19vw;
+  }
+  @media (max-width: 408px) {
+    width: 100%;
+    margin-left: 0;
   }
 
   .wrapper {
@@ -61,7 +87,7 @@ const StyledPic = styled.div`
     position: relative;
     width: 100%;
     border-radius: var(--border-radius);
-    background-color: var(--green);
+    background-color: transparent;
 
     &:hover,
     &:focus {
@@ -69,8 +95,8 @@ const StyledPic = styled.div`
       outline: 0;
 
       &:after {
-        top: 15px;
-        left: 15px;
+        top: 2px;
+        left: 0px;
       }
 
       .img {
@@ -81,8 +107,8 @@ const StyledPic = styled.div`
 
     .img {
       position: relative;
-      border-radius: var(--border-radius);
-      mix-blend-mode: multiply;
+      border-radius: ;
+      mix-blend-mode: none;
       filter: grayscale(100%) contrast(1);
       transition: var(--transition);
     }
@@ -94,39 +120,47 @@ const StyledPic = styled.div`
       position: absolute;
       width: 100%;
       height: 100%;
-      border-radius: var(--border-radius);
+      border-radius: none;
       transition: var(--transition);
     }
 
     &:before {
       top: 0;
       left: 0;
-      background-color: var(--navy);
-      mix-blend-mode: screen;
+      background-color: transparent;
+      mix-blend-mode: none;
     }
 
     &:after {
-      border: 2px solid var(--green);
-      top: 20px;
-      left: 20px;
+      border: 2px solid;
+      border-color: var(--red);
+      top: 2px;
+      left: 2px;
       z-index: -1;
     }
   }
 `;
 
 const About = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      avatar: file(sourceInstanceName: { eq: "images" }, relativePath: { eq: "me.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 500, traceSVG: { color: "#989898" }) {
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          }
+        }
+      }
+    }
+  `);
+
   const revealContainer = useRef(null);
-  const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
-    if (prefersReducedMotion) {
-      return;
-    }
-
     sr.reveal(revealContainer.current, srConfig());
   }, []);
 
-  const skills = ['JavaScript (ES6+)', 'TypeScript', 'React', 'Eleventy', 'Node.js', 'WordPress'];
+  const skills = ['git', 'SQL', 'HTML/CSS', 'Adobe Creative Suite', 'Python', 'JavaScript'];
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
@@ -135,34 +169,29 @@ const About = () => {
       <div className="inner">
         <StyledText>
           <div>
+            <p>Budding self-taught tech engineer</p>
+            <p>Longtime multidisciplinary scientist</p>
+            <p>Seasoned performing, media, visual artist</p>
+            <p>&nbsp;</p>
+            <p>Passionate about making a creative, meaningful difference</p>
+            <p>Striving to elevate others, build community, and leave lasting impressions</p>
             <p>
-              Hello! My name is Brittany and I enjoy creating things that live on the internet. My
-              interest in web development started back in 2012 when I decided to try editing custom
-              Tumblr themes — turns out hacking together a custom reblog button taught me a lot
-              about HTML &amp; CSS!
+              Currently working at the intersection of healthcare, science, technology, and data
+            </p>
+            <p>&nbsp;</p>
+            <p>Well-versed in health care operations, procedures, regulation, and terminology</p>
+            <p>Blend of technical, customer service and research conduct expertise</p>
+            <p>
+              Published first- and co-author in medical peer-reviewed journals & conference
+              proceedings
             </p>
 
-            <p>
-              Fast-forward to today, and I’ve had the privilege of working at{' '}
-              <a href="https://us.mullenlowe.com/">an advertising agency</a>,{' '}
-              <a href="https://starry.com/">a start-up</a>,{' '}
-              <a href="https://www.apple.com/">a huge corporation</a>, and{' '}
-              <a href="https://scout.camd.northeastern.edu/">a student-led design studio</a>. My
-              main focus these days is building accessible, inclusive products and digital
-              experiences at <a href="https://upstatement.com/">Upstatement</a> for a variety of
-              clients.
-            </p>
-
-            <p>
-              I also recently{' '}
-              <a href="https://www.newline.co/courses/build-a-spotify-connected-app">
-                launched a course
-              </a>{' '}
-              that covers everything you need to build a web app with the Spotify API using Node
-              &amp; React.
-            </p>
-
-            <p>Here are a few technologies I’ve been working with recently:</p>
+            <p>&nbsp;</p>
+            <p>NYC-born, NY-suburb-bred, Filipino American, currently living in Brooklyn</p>
+            <p>Received a BS in Biochemistry from Binghamton University</p>
+            <p>Probably rock climbing, drinking thai bubble tea, loving my maltese, or eating.</p>
+            <br></br>
+            <p>Here are tools I'm working with:</p>
           </div>
 
           <ul className="skills-list">
@@ -172,14 +201,7 @@ const About = () => {
 
         <StyledPic>
           <div className="wrapper">
-            <StaticImage
-              className="img"
-              src="../../images/me.jpg"
-              width={500}
-              quality={95}
-              formats={['AUTO', 'WEBP', 'AVIF']}
-              alt="Headshot"
-            />
+            <Img fluid={data.avatar.childImageSharp.fluid} alt="Avatar" className="img" />
           </div>
         </StyledPic>
       </div>
