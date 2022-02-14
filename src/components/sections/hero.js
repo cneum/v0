@@ -25,11 +25,13 @@ const StyledHeroSection = styled.section`
   }
 
   h3 {
+    margin-top: 15px;
     margin-bottom: 5px;
     color: black;
     letter-spacing: -2px;
     font-family: var(--font-serif);
     font-weight: 300;
+    line-height: 0.85;
   }
 
   p {
@@ -51,8 +53,10 @@ const StyledHeroSection = styled.section`
     ${({ theme }) => theme.mixins.bigButton};
     background: var(--red);
     margin-top: 20px;
-    color: black;
-    border: 1px solid black;
+    color: var(--greige);
+    font-weight: 500;
+    border: 1px solid var(--red);
+    font-size: 22px;
   }
 `;
 
@@ -70,21 +74,16 @@ const Hero = () => {
 
   const one = <h1>Hi, my name is</h1>;
   const two = <h2 className="big-heading">Celine</h2>;
-  const three = <h3 className="medium-heading">I like to solve problems.</h3>;
-  const four = (
-    <p>
-      I'm a science enthusiast, serial tinkerer, and native New Yorker navigating life as if it were
-      a balletic pas de deux.
-    </p>
-  );
+  const three = <p>Engineer / Scientist / Artist</p>;
+  const four = <h3 className="medium-heading">I like to create solutions that empower others.</h3>;
   const five = (
     <a href="https://www.celinenicolas.com/" className="hero-link">
-      Explore my workflows*
+      ASK ME ANYTHING&nbsp;→
     </a>
   );
   const six = (
     <p className="notice">
-      <sup>Under construction*</sup>
+      <sup></sup>
     </p>
   );
   const items = [one, two, three, four, five, six];

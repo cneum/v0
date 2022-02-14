@@ -64,7 +64,7 @@ const StyledText = styled.div`
     font-size: 10.5px;
     letter-spacing: 0px;
     line-height: 0.95;
-    margin-bottom: 10px;
+    margin-bottom: 2px;
   }
 `;
 const StyledPic = styled.div`
@@ -169,29 +169,29 @@ const About = () => {
       <div className="inner">
         <StyledText>
           <div>
-            <p>Hello! I'm Celine.</p>
+            <p>Budding self-taught tech engineer</p>
+            <p>Longtime multidisciplinary scientist</p>
+            <p>Seasoned performing, media, visual artist</p>
+            <p>&nbsp;</p>
+            <p>Passionate about making a creative, meaningful difference</p>
+            <p>Striving to elevate others, build community, and leave lasting impressions</p>
             <p>
-              I am an insight-driven healthcare professional with a passion for harnessing
-              innovation to make people’s lives easier and impact the world around me.
+              Currently working at the intersection of healthcare, science, technology, and data
             </p>
+            <p>&nbsp;</p>
+            <p>Well-versed in health care operations, procedures, regulation, and terminology</p>
+            <p>Blend of technical, customer service and research conduct expertise</p>
             <p>
-              I am fortunate to have had the opportunity to tackle problems and create strategies
-              using frameworks, analytics and visualization techniques across a variety of
-              scientific research, service delivery, and clinical settings. Through these
-              experiences, I've gained a deep understanding of medicine, academia, research, and
-              extensive knowledge of clinical operations for both private physician offices and
-              hospitals.
+              Published first- and co-author in medical peer-reviewed journals & conference
+              proceedings
             </p>
-            <p>
-              My creative background as a ballerina and painter gives me a unique perspective to see
-              a problem, visualize abstract solutions, and execute ideas. I'm continuously driven
-              towards learning and developing new skills. I'm continuously driven towards learning
-              and developing new skills.
-            </p>
-            <p>
-              Outside the office, you might find me rock climbing, eating mac & cheese, or painting.
-            </p>
-            <p>Here are technologies I'm working with:</p>
+
+            <p>&nbsp;</p>
+            <p>NYC-born, NY-suburb-bred, Filipino American, currently living in Brooklyn</p>
+            <p>Received a BS in Biochemistry from Binghamton University</p>
+            <p>Probably rock climbing, drinking thai bubble tea, loving my maltese, or eating.</p>
+            <br></br>
+            <p>Here are tools I'm working with:</p>
           </div>
 
           <ul className="skills-list">

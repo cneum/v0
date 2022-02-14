@@ -100,7 +100,7 @@ const StyledLinks = styled.div`
       margin: 0 5px;
       position: relative;
       counter-increment: item 1;
-      font-size: var(--fz-xs);
+      font-size: var(--fz-sm);
 
       a {
         ${({ theme }) => theme.mixins.inlineLink};
@@ -112,7 +112,7 @@ const StyledLinks = styled.div`
           color: var(--red);
           font-weight: 800;
           font-style: italic;
-          font-size: var(--fz-xl);
+          font-size: var(--fz-md);
           text-align: right;
         }
         &:after {
